@@ -1,0 +1,21 @@
+xia2.settings {
+  input {
+    anomalous = false
+    image = /home/Data/distributed_computing_test/Tau-nat/Tau-natA5_1_master.h5
+    xinfo = /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/automatic.xinfo
+  }
+  resolution {
+    keep_all_reflections = false
+  }
+  multi_sweep_indexing = False
+  multi_sweep_refinement = False
+  indexer = xds xdsii *dials
+  refiner = xds *dials
+  integrater = xdsr xds *dials
+  scaler = ccp4a xdsa *dials
+  multiprocessing {
+    nproc = 90
+    njob = 1
+  }
+}
+

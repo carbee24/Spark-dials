@@ -1,0 +1,22 @@
+Project: AUTOMATIC
+Crystal: DEFAULT
+Sequence length: 0
+Wavelength: NATIVE (0.97625)
+Sweep: SWEEP1
+Files /home/Data/distributed_computing_test/Tau-nat/Tau-natA5_1_master.h5
+Images: 1 to 1800
+Beam 158.91 157.58 => 159.06 157.03
+Distance 285.44 => 285.86
+Date: Thu Jan  1 00:00:01 1970
+For AUTOMATIC/DEFAULT/NATIVE:
+High resolution limit                           1.47    4.00    1.47
+Low resolution limit                           54.17   54.21    1.50
+Completeness                                   83.8   100.0    10.3
+Multiplicity                                    9.3    12.1     1.2
+I/sigma                                         9.2    30.4     0.2
+Rmerge(I+/-)                                  0.121   0.081   0.456
+CC half                                       0.997   0.996   0.422
+Anomalous completeness                         77.1   100.0     0.8
+Anomalous multiplicity                          5.1     7.2     1.1
+Cell:  58.041  58.041 150.903  90.000  90.000  90.000
+Spacegroup: P 41 21 2

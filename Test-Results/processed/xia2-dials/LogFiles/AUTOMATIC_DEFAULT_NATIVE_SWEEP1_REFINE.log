@@ -1,0 +1,107 @@
+DIALS (2018) Acta Cryst. D74, 85-97. https://doi.org/10.1107/S2059798317017235
+DIALS 3.8
+The following parameters have been modified:
+
+output {
+  experiments = "/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/refine/10_refined.expt"
+  reflections = "/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/refine/10_refined.refl"
+}
+refinement {
+  parameterisation {
+    scan_varying = True
+  }
+  reflections {
+    reflections_per_degree = 100
+    outlier {
+      algorithm = Auto
+    }
+  }
+}
+input {
+  experiments = /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/refine/9_refined.expt
+  reflections = /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/refine/9_refined.refl
+}
+
+Configuring refiner
+
+Summary statistics for 91364 observations matched to predictions:
++-------------------+--------+----------+----------+---------+-------+
+|                   |    Min |       Q1 |      Med |      Q3 |   Max |
+|-------------------+--------+----------+----------+---------+-------|
+| Xc - Xo (mm)      | -4.622 | -0.07077 | 0.009936 | 0.07558 | 7.308 |
+| Yc - Yo (mm)      | -1.299 | -0.08919 | 0.007868 | 0.09899 | 1.475 |
+| Phic - Phio (deg) | -7.545 |  -0.1279 | -0.04062 | 0.08803 | 11.09 |
+| X weights         |  904.7 |     1820 |     1987 |    2085 |  2133 |
+| Y weights         |  711.1 |     1823 |     1979 |    2073 |  2133 |
+| Phi weights       |    400 |     1166 |     1188 |    1200 |  1200 |
++-------------------+--------+----------+----------+---------+-------+
+
+Detecting centroid outliers using the MCD algorithm
+24708 reflections have been flagged as outliers
+66656 reflections remain in the manager
+
+Summary statistics for 66656 observations matched to predictions:
++-------------------+---------+----------+----------+---------+--------+
+|                   |     Min |       Q1 |      Med |      Q3 |    Max |
+|-------------------+---------+----------+----------+---------+--------|
+| Xc - Xo (mm)      | -0.4466 | -0.05332 | 0.009281 | 0.05807 |  0.424 |
+| Yc - Yo (mm)      | -0.6922 | -0.08166 | 0.004086 | 0.08643 | 0.4875 |
+| Phic - Phio (deg) | -0.3551 | -0.09495 | -0.03521 | 0.07489 | 0.5635 |
+| X weights         |   914.3 |     1851 |     2014 |    2094 |   2133 |
+| Y weights         |   756.1 |     1885 |     2013 |    2085 |   2133 |
+| Phi weights       |   585.4 |     1172 |     1188 |    1200 |   1200 |
++-------------------+---------+----------+----------+---------+--------+
+
+There are 42 parameters to refine against 18000 reflections in 3 dimensions
+Performing refinement of a single Experiment...
+
+Refinement steps:
++--------+--------+----------+----------+------------+
+|   Step |   Nref |   RMSD_X |   RMSD_Y |   RMSD_Phi |
+|        |        |     (mm) |     (mm) |      (deg) |
+|--------+--------+----------+----------+------------|
+|      0 |  18000 | 0.097608 | 0.11806  |   0.13257  |
+|      1 |  18000 | 0.093855 | 0.090145 |   0.13172  |
+|      2 |  18000 | 0.087552 | 0.083755 |   0.12305  |
+|      3 |  18000 | 0.076686 | 0.07542  |   0.10466  |
+|      4 |  18000 | 0.066464 | 0.069331 |   0.081519 |
+|      5 |  18000 | 0.061815 | 0.066946 |   0.070133 |
+|      6 |  18000 | 0.059938 | 0.065562 |   0.068227 |
+|      7 |  18000 | 0.059453 | 0.065012 |   0.067552 |
+|      8 |  18000 | 0.059458 | 0.064948 |   0.067225 |
+|      9 |  18000 | 0.059461 | 0.064952 |   0.06717  |
+|     10 |  18000 | 0.059459 | 0.064946 |   0.067166 |
++--------+--------+----------+----------+------------+
+RMSD no longer decreasing
+
+RMSDs by experiment:
++-------+--------+----------+----------+------------+
+|   Exp |   Nref |   RMSD_X |   RMSD_Y |     RMSD_Z |
+|    id |        |     (px) |     (px) |   (images) |
+|-------+--------+----------+----------+------------|
+|     0 |  18000 |  0.79279 |  0.86595 |    0.67166 |
++-------+--------+----------+----------+------------+
+Updating predictions for indexed reflections
+
+Final refined crystal model:
+Crystal:
+    Unit cell: 58.015(4), 58.015(4), 150.828(10), 90.0, 90.0, 90.0
+    Space group: P 4
+    U matrix:  {{ 0.1348, -0.8330, -0.5365},
+                {-0.4863,  0.4162, -0.7683},
+                { 0.8633,  0.3645, -0.3490}}
+    B matrix:  {{ 0.0172,  0.0000,  0.0000},
+                { 0.0000,  0.0172,  0.0000},
+                {-0.0000,  0.0000,  0.0066}}
+    A = UB:    {{ 0.0023, -0.0144, -0.0036},
+                {-0.0084,  0.0072, -0.0051},
+                { 0.0149,  0.0063, -0.0023}}
+    A sampled at 1801 scan points
+Saving refined experiments to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/refine/10_refined.expt
+Saving reflections with updated predictions to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/refine/10_refined.refl
+# command line:
+# dials.refine  '9_refined.expt' '9_refined.refl' 'scan_varying=True' 'close_to_spindle_cutoff=0.020000' 'outlier.algorithm=auto' 'output.experiments=10_refined.expt' 'output.reflections=10_refined.refl' 'reflections_per_degree=100' 'unit_cell.smoother.interval_width_degrees=36' 'orientation.smoother.interval_width_degrees=36'
+#
+# timing information:
+#   time since object initialization: 17.3 seconds
+#   time since process start: 17.3 seconds

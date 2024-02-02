@@ -1,0 +1,1934 @@
+Process ID: 54536
+Environment configuration...
+Python => /home/Data/local/opt/xtal/ccp4-8.0/libexec/python3.7
+CCTBX => /home/Data/local/opt/xtal/ccp4-8.0/lib/python3.7/site-packages
+CCP4 => /home/Data/local/opt/xtal/ccp4-8.0
+CCP4_SCR => /tmp/tmp5exjcjbh
+Starting directory: /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials
+Working directory: /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials
+Free space:        5.59 GB
+Host: localhost
+Contact: xia2.support@gmail.com
+XIA2 3.8.6
+DIALS 3.8
+CCP4 8.0.012
+Start parsing command line: ['/home/Data/local/opt/xtal/ccp4-8.0/bin/xia2', 'pipeline=dials', 'nproc=90', 'image=/home/Data/distributed_computing_test/Tau-nat/Tau-natA5_1_master.h5']
+DIALS pipeline selected
+Project: AUTOMATIC
+Crystal: DEFAULT
+No image range specified
+
+Difference PHIL:
+xia2.settings {
+  input {
+    anomalous = false
+    image = /home/Data/distributed_computing_test/Tau-nat/Tau-natA5_1_master.h5
+    xinfo = /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/automatic.xinfo
+  }
+  resolution {
+    keep_all_reflections = false
+  }
+  multi_sweep_indexing = False
+  multi_sweep_refinement = False
+  indexer = xds xdsii *dials
+  refiner = xds *dials
+  integrater = xdsr xds *dials
+  scaler = ccp4a xdsa *dials
+  multiprocessing {
+    nproc = 90
+    njob = 1
+  }
+}
+
+Working PHIL:
+general {
+  check_image_files_readable = True
+  check_for_saturated_pixels = False
+}
+xds {
+  hdf5_plugin = "durin-plugin.so"
+  z_min = 0.0
+  delphi = 5
+  delphi_small = 30
+  untrusted_ellipse = None
+  untrusted_rectangle = None
+  trusted_region = None
+  backstop_mask = None
+  profile_grid_size = None
+  keep_outliers = True
+  correct {
+    refine = *DISTANCE *BEAM *AXIS *ORIENTATION *CELL *POSITION
+    air = None
+  }
+  integrate {
+    refine = *ORIENTATION *CELL *BEAM *DISTANCE AXIS *POSITION
+    refine_final = *ORIENTATION *CELL BEAM *DISTANCE AXIS *POSITION
+    fix_scale = False
+    delphi = 0
+    reflecting_range = 0
+    reflecting_range_esd = 0
+    beam_divergence = 0
+    beam_divergence_esd = 0
+    reintegrate = true
+  }
+  init {
+    fix_scale = False
+  }
+  defpix {
+    value_range_for_trusted_detector_pixels = None
+  }
+  index {
+    refine = *ORIENTATION *CELL *BEAM *DISTANCE *AXIS *POSITION
+    debug = *OFF ON
+    xparm = None
+    xparm_ub = None
+    max_wedge_size = 5
+    max_wedge_size_degrees = None
+  }
+  colspot {
+    minimum_pixels_per_spot = 2
+  }
+  xscale {
+    min_isigma = 3.0
+    zero_dose = False
+  }
+  merge2cbf {
+    merge_n_images = 2
+    data_range = None
+    moving_average = False
+  }
+}
+dials {
+  fix_geometry = False
+  fix_distance = False
+  outlier {
+    algorithm = null *auto mcd tukey sauter_poon
+  }
+  check_indexing_symmetry = False
+  fast_mode = False
+  close_to_spindle_cutoff = 0.02
+  detect_blanks {
+    phi_step = 2
+    counts_fractional_loss = 0.1
+    misigma_fractional_loss = 0.1
+  }
+  masking {
+    border = 0
+    d_min = None
+    d_max = None
+    disable_parallax_correction = False
+    resolution_range = None
+    untrusted {
+      panel = None
+      circle = None
+      rectangle = None
+      polygon = None
+      pixel = None
+    }
+    ice_rings {
+      filter = False
+      unit_cell = 4.498,4.498,7.338,90,90,120
+      space_group = 194
+      width = 0.002
+      d_min = None
+    }
+  }
+  find_spots {
+    phil_file = None
+    threshold.algorithm = dispersion dispersion_extended
+    min_spot_size = None
+    min_local = 0
+    sigma_strong = None
+    filter_ice_rings = False
+    kernel_size = 3
+    global_threshold = None
+  }
+  index {
+    phil_file = None
+    method = fft1d *fft3d real_space_grid_search
+    max_cell = 0.0
+    max_cell_estimation {
+      max_height_fraction = None
+    }
+    fft3d.n_points = None
+    reflections_per_degree = 100
+    histogram_binning = linear log
+    nearest_neighbor_percentile = None
+  }
+  refine {
+    phil_file = None
+    scan_static = True
+    scan_varying = True
+    interval_width_degrees = 36.0
+    reflections_per_degree = 100
+    restraints {
+      tie_to_target {
+        values = None
+        sigmas = None
+        id = None
+      }
+      tie_to_group {
+        target = *mean low_memory_mean median
+        sigmas = None
+        id = None
+      }
+    }
+  }
+  integrate {
+    phil_file = None
+    background_outlier_algorithm = *null nsigma truncated normal plane tukey
+    background_algorithm = simple null *glm
+    combine_partials = True
+    partiality_threshold = 0.99
+    mosaic = *old new
+    scan_varying_profile = False
+    d_min = None
+    d_max = None
+    min_spots {
+      overall = None
+      per_degree = None
+    }
+  }
+  high_pressure {
+    correction = False
+    anvil {
+      density = 3510
+      thickness = 1.5925
+      normal = 0, 1, 0
+    }
+    output {
+      experiments = None
+      reflections = corrected.refl
+      log = dials.anvil_correction.log
+    }
+  }
+  scale {
+    model = *auto physical dose_decay array KB
+    rotation_spacing = None
+    Bfactor = True
+    absorption = True
+    physical_model {
+      Bfactor_spacing = None
+      absorption_level = low medium high
+      lmax = auto
+      surface_weight = auto
+      share.absorption = False
+    }
+    dose_decay_model {
+      share.decay = True
+      resolution_dependence = *quadratic linear
+      lmax = 4
+    }
+    array_model {
+      resolution_bins = 10
+      absorption_bins = 5
+    }
+    intensity_choice = profile summation *combine
+    error_model = *basic None
+    error_model_grouping = *combined individual grouped
+    error_model_group = None
+    full_matrix = auto
+    outlier_rejection = *standard simple
+    outlier_zmax = 6.0
+    partiality_threshold = 0.4
+  }
+}
+ccp4 {
+  reindex {
+    program = *pointless reindex cctbx
+  }
+  aimless {
+    intensities = summation profile *combine
+    surface_tie = 0.001
+    surface_link = True
+    rotation.spacing = 5
+    brotation.spacing = None
+    secondary {
+      frame = camera *crystal
+      lmax = 6
+    }
+  }
+  truncate {
+    program = ctruncate *cctbx
+  }
+}
+strategy {
+  name = None
+  description = None
+  i_over_sigi = 2.0
+  minimize_total_time = False
+  target_resolution = None
+  max_total_exposure = None
+  anomalous = False
+  dose_rate = 0.0
+  shape = 1.0
+  susceptibility = 1.0
+  completeness = 0.99
+  multiplicity = None
+  phi_range = None
+  min_oscillation_width = 0.05
+  xml_out = None
+  max_rotation_speed = None
+  min_exposure = None
+}
+xia2.settings {
+  pipeline = 3d 3dd 3di 3dii *dials dials-aimless
+  small_molecule = False
+  small_molecule_bfactor = True
+  failover = False
+  multi_crystal = False
+  interactive = False
+  project = 'AUTOMATIC'
+  crystal = 'DEFAULT'
+  input {
+    atom = None
+    anomalous = false
+    working_directory = None
+    image = /home/Data/distributed_computing_test/Tau-nat/Tau-natA5_1_master.h5
+    json = None
+    reference_geometry = None
+    xinfo = /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/automatic.xinfo
+    reverse_phi = False
+    gain = None
+    min_images = 10
+    min_oscillation_range = None
+    tolerance {
+      beam {
+        wavelength = 1e-6
+        direction = 1e-6
+        polarization_normal = 1e-6
+        polarization_fraction = 1e-6
+      }
+      detector {
+        fast_axis = 1e-6
+        slow_axis = 1e-6
+        origin = 5e-2
+      }
+      goniometer {
+        rotation_axis = 1e-6
+        fixed_rotation = 1e-6
+        setting_rotation = 1e-6
+      }
+      scan {
+        oscillation = 0.03
+      }
+    }
+    geometry {
+      beam {
+        wavelength = None
+        direction = None
+        polarization_normal = None
+        polarization_fraction = None
+      }
+      detector {
+        panel {
+          id = 0
+          name = None
+          type = None
+          gain = None
+          pedestal = None
+          pixel_size = None
+          image_size = None
+          trusted_range = None
+          thickness = None
+          material = None
+          fast_axis = None
+          slow_axis = None
+          origin = None
+          parallax_correction = None
+        }
+        hierarchy {
+          name = None
+          fast_axis = None
+          slow_axis = None
+          origin = None
+          group {
+            id = None
+            name = None
+            fast_axis = None
+            slow_axis = None
+            origin = None
+            panel = None
+          }
+        }
+        mosflm_beam_centre = None
+        distance = None
+        fast_slow_beam_centre = None
+        slow_fast_beam_centre = None
+      }
+      goniometer {
+        axis = None
+        axes = None
+        angles = None
+        names = None
+        scan_axis = None
+        fixed_rotation = None
+        setting_rotation = None
+        invert_rotation_axis = False
+      }
+      scan {
+        image_range = None
+        extrapolate_scan = False
+        oscillation = None
+        batch_offset = None
+      }
+      convert_stills_to_sequences = False
+      convert_sequences_to_stills = False
+    }
+    format {
+      dynamic_shadowing = auto
+      multi_panel = False
+    }
+  }
+  sweep {
+    id = None
+    range = None
+    exclude = False
+  }
+  scale {
+    directory = Auto
+    free_fraction = 0.05
+    free_total = None
+    freer_file = None
+    reference_reflection_file = None
+    reference_experiment_file = None
+    model = *decay *modulation *absorption partiality
+    scales = *rotation batch
+    two_theta_refine = True
+  }
+  space_group = None
+  unit_cell = None
+  resolution {
+    keep_all_reflections = false
+    d_max = None
+    d_min = None
+    rmerge = None
+    completeness = None
+    cc_ref = 0.1
+    cc_half = 0.3
+    cc_half_method = *half_dataset sigma_tau
+    cc_half_significance_level = 0.1
+    cc_half_fit = polynomial *tanh
+    isigma = None
+    misigma = None
+    i_mean_over_sigma_mean = None
+    nbins = 100
+    reflections_per_bin = 10
+    binning_method = *counting_sorted volume
+    anomalous = False
+    labels = None
+    space_group = None
+    reference = None
+    emax = 4
+  }
+  unify_setting = False
+  trust_beam_centre = False
+  wavelength_tolerance = 0.00005
+  read_all_image_headers = True
+  detector_distance = None
+  show_template = False
+  untrusted_rectangle_indexing = None
+  xds_cell_deviation = 0.05, 5.0
+  xds_check_cell_deviation = False
+  use_brehm_diederichs = False
+  integration {
+    profile_fitting = True
+    exclude_ice_regions = False
+  }
+  developmental {
+    continue_from_previous_job = False
+    use_dials_spotfinder = False
+    pointless_tolerance = 0.0
+    detector_id = None
+  }
+  multi_sweep_indexing = False
+  multi_sweep_refinement = False
+  remove_blanks = False
+  integrate_p1 = False
+  reintegrate_correct_lattice = True
+  lattice_rejection = True
+  lattice_rejection_threshold = 1.5
+  xds {
+    geometry_x = None
+    geometry_y = None
+  }
+  indexer = xds xdsii *dials
+  refiner = xds *dials
+  integrater = xdsr xds *dials
+  scaler = ccp4a xdsa *dials
+  merging_statistics {
+    source = aimless *cctbx
+    n_bins = 20
+    use_internal_variance = False
+    eliminate_sys_absent = False
+  }
+  verbose = False
+  multiprocessing {
+    mode = *serial parallel
+    nproc = 90
+    njob = 1
+    type = *simple qsub
+    qsub_command = ''
+  }
+  report {
+    d_min = None
+    d_max = None
+    resolution_bins = 20
+    anomalous = False
+    use_internal_variance = False
+    eliminate_sys_absent = False
+    range {
+      width = 1
+      min = None
+      max = None
+    }
+    cc_half_significance_level = 0.01
+    cc_half_method = *half_dataset sigma_tau
+    chef_min_completeness = None
+    dose {
+      remove_gaps = True
+      batch {
+        range = None
+        dose_start = None
+        dose_step = None
+      }
+    }
+    xtriage_analysis = True
+    include_radiation_damage = True
+    batch {
+      id = None
+      range = None
+    }
+  }
+  symmetry {
+    chirality = chiral nonchiral centrosymmetric
+    program = *pointless dials
+  }
+  output {
+    mmcif {
+      pdb_version = v5 *v5_next
+    }
+  }
+}
+
+Command line: xia2 pipeline=dials nproc=90 image=/home/Data/distributed_computing_test/Tau-nat/Tau-natA5_1_master.h5
+Using FormatNexus for /home/Data/distributed_computing_test/Tau-nat/Tau-natA5_1_master.h5
+Loaded file: /home/Data/distributed_computing_test/Tau-nat/Tau-natA5_1_master.h5
+------------------------------------------------------------
+XINFO file: /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/automatic.xinfo
+BEGIN PROJECT AUTOMATIC
+BEGIN CRYSTAL DEFAULT
+
+BEGIN WAVELENGTH NATIVE
+WAVELENGTH 0.976254
+END WAVELENGTH NATIVE
+
+BEGIN SWEEP SWEEP1
+WAVELENGTH NATIVE
+DIRECTORY /home/Data/distributed_computing_test/Tau-nat
+IMAGE Tau-natA5_1_master.h5
+START_END 1 1800
+END SWEEP SWEEP1
+
+END CRYSTAL DEFAULT
+END PROJECT AUTOMATIC
+------------------------------------------------------------
+Overriding value for wavelength NATIVE to 0.976254
+Exposure epoch for sweep Tau-natA5_1_master.h5: 1 20
+Detector could not be identified
+Project directory: /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials
+SWEEP1
+Experiment 0:
+Format class: FormatNexus
+Image template: /home/Data/distributed_computing_test/Tau-nat/Tau-natA5_1_master.h5
+Detector:
+Panel:
+  name: /entry/instrument/detector
+  type: SENSOR_PAD
+  identifier: 
+  pixel_size:{0.075,0.075}
+  image_size: {4150,4371}
+  trusted_range: {-2.14748e+09,33000}
+  thickness: 0.45
+  material: Si
+  mu: 3.92208
+  gain: 1
+  pedestal: 0
+  fast_axis: {1,0,0}
+  slow_axis: {0,-1,0}
+  origin: {-157.58,158.907,-285.441}
+  distance: 285.441
+  pixel to millimeter strategy: ParallaxCorrectedPxMmStrategy
+    mu: 3.92208
+    t0: 0.45
+
+
+Max resolution (at corners): 1.463369
+Max resolution (inscribed):  1.997779
+
+Beam:
+    wavelength: 0.976254
+    sample to source direction : {0,0,1}
+    divergence: 0
+    sigma divergence: 0
+    polarization normal: {0,1,0}
+    polarization fraction: 0.999
+
+Beam centre: 
+    mm: (157.58,158.91)
+    px: (2101.07,2118.76)
+
+Scan:
+    number of images:   1800
+    image range:   {1,1800}
+    oscillation:   {68.8273,0.1}
+    exposure time: 0.0110031
+
+Goniometer:
+    Rotation axis:   {0,1,0}
+    Fixed rotation:  {1,0,0,0,1,0,0,0,1}
+    Setting rotation:{1,0,0,0,1,0,0,0,1}
+
+Set up path /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate
+Using Dials Integrater
+setting integrator output format to pickle
+Integrater factory: Setting wavelength: 0.976254
+Set up path /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/refine
+Using Dials Refiner
+Set up path /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index
+Using DialsIndexer
+Refiner reset
+Integrater / refiner / indexer for sweep SWEEP1: DialsIntegrater/DialsRefiner/DialsIndexer
+Resetting refiner done as prepare not done
+Called refiner done from xia2.Schema.Interfaces.Refiner 195 (False)
+Resetting integrater done as prepare not done
+Resetting integrater finish done as integrate not done
+Resetting refiner done as prepare not done
+Called refiner done from xia2.Schema.Interfaces.Refiner 195 (False)
+Resetting integrater done as prepare not done
+Resetting refiner done as prepare not done
+Called refiner done from xia2.Schema.Interfaces.Refiner 195 (False)
+Preparing to do some integration...
+Sweep epoch: 1
+DIALS INTEGRATE PREPARE:
+Wavelength: 0.976254
+Distance: 285.44
+Resetting indexer done as prepare not done
+Resetting indexer finish done as index not done, from /home/Data/local/opt/xtal/ccp4-8.0/lib/python3.7/site-packages/xia2/Schema/Interfaces/Indexer.py/420
+Index in DialsIndexer called from /home/Data/local/opt/xtal/ccp4-8.0/lib/python3.7/site-packages/xia2/Schema/Interfaces/Refiner.py 249
+Resetting indexer done as prepare not done
+Resetting indexer finish done as index not done, from /home/Data/local/opt/xtal/ccp4-8.0/lib/python3.7/site-packages/xia2/Schema/Interfaces/Indexer.py/429
+Resetting indexer done as prepare not done
+-------------------- Spotfinding SWEEP1 --------------------
+Logfile: dials.generate_mask -> /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/1_dials.generate_mask.log
+Running dials.generate_mask
+Last 21 lines of /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/1_dials.generate_mask.log:
+The following parameters have been modified:
+
+output {
+  mask = "/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/1_pixels.mask"
+  experiments = "/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/1_SWEEP1_masked.expt"
+}
+input {
+  experiments = /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/SWEEP1_import.expt
+}
+
+DIALS (2018) Acta Cryst. D74, 85-97. https://doi.org/10.1107/S2059798317017235
+Writing mask to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/1_pixels.mask
+Saving experiments to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/1_SWEEP1_masked.expt
+/home/Data/local/opt/xtal/ccp4-8.0/lib/python3.7/site-packages/dxtbx/src/dxtbx/format/FormatNXmx.py:22: H5pyDeprecationWarning: The default file mode will change to 'r' (read-only) in h5py 3.0. To suppress this warning, pass the mode you need to h5py.File(), or set the global default h5.get_config().default_file_mode, or set the environment variable H5PY_DEFAULT_READONLY=1. Available modes are: 'r', 'r+', 'w', 'w-'/'x', 'a'. See the docs for details.
+  with h5py.File(image_file, swmr=True) as handle:
+# command line:
+# dials.generate_mask  'input.experiments=SWEEP1_import.expt' 'output.mask=1_pixels.mask' 'output.experiments=1_SWEEP1_masked.expt' '1_mask.phil'
+#
+# timing information:
+#   time since object initialization: 2.0 seconds
+#   time since process start: 2.0 seconds
+Generated mask for SWEEP1: /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/1_pixels.mask
+Logfile: dials.find_spots -> /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/2_dials.find_spots.log
+Running dials.find_spots
+Last 50 lines of /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/2_dials.find_spots.log:
+Found 7583 strong pixels on image 1783
+Found 7362 strong pixels on image 1784
+Found 6597 strong pixels on image 1785
+Found 6415 strong pixels on image 1786
+Found 6664 strong pixels on image 1787
+Found 6790 strong pixels on image 1788
+Found 6940 strong pixels on image 1789
+Found 7495 strong pixels on image 1790
+Found 7616 strong pixels on image 1791
+Found 7223 strong pixels on image 1792
+Found 7003 strong pixels on image 1793
+Found 7025 strong pixels on image 1794
+Found 7115 strong pixels on image 1795
+Found 7028 strong pixels on image 1796
+Found 6977 strong pixels on image 1797
+Found 7099 strong pixels on image 1798
+Found 7369 strong pixels on image 1799
+Found 7179 strong pixels on image 1800
+
+Extracted 283347 spots
+Removed 138921 spots with size < 3 pixels
+Removed 609 spots with size > 1000 pixels
+Calculated 143817 spot centroids
+Calculated 143817 spot intensities
+Filtered 124524 of 143817 spots by peak-centroid distance
+Found 1 possible hot pixel(s)
+
+Histogram of per-image spot count for imageset 0:
+124524 spots found on 1800 images (max 3180 / bin)
+     ****                                                   
+   ********                                                 
+*************                                               
+**************                       ******************* ***
+***************                 ****************************
+*****************          *********************************
+************************************************************
+************************************************************
+************************************************************
+************************************************************
+1                         image                         1800
+
+--------------------------------------------------------------------------------
+Saved 124524 reflections to 2_SWEEP1_strong.refl
+Saving experiments to 2_SWEEP1_strong.expt
+# command line:
+# dials.find_spots  'input.experiments=1_SWEEP1_masked.expt' 'output.experiments=2_SWEEP1_strong.expt' 'output.reflections=2_SWEEP1_strong.refl' 'nproc=90' 'spotfinder.scan_range=1,1800' 'dispersion.min_local=0' 'dispersion.kernel_size=3 3' 'write_hot_mask=true' 'hot_mask_prefix=2_hot_mask'
+#
+# timing information:
+#   time since object initialization: 124.8 seconds
+#   time since process start: 124.8 seconds
+124524 spots found on 1800 images (max 3180 / bin)
+     ****                                                   
+   ********                                                 
+*************                                               
+**************                       ******************* ***
+***************                 ****************************
+*****************          *********************************
+************************************************************
+************************************************************
+************************************************************
+************************************************************
+1                         image                         1800
+Logfile: dials.detect_blanks -> /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/3_dials.detect_blanks.log
+Last 18 lines of /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/3_dials.detect_blanks.log:
+DIALS (2018) Acta Cryst. D74, 85-97. https://doi.org/10.1107/S2059798317017235
+The following parameters have been modified:
+
+output {
+  json = "/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/3_blanks.json"
+}
+input {
+  experiments = 2_SWEEP1_strong.expt
+  reflections = /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/2_SWEEP1_strong.refl
+}
+
+Analysis of 124524 strong reflections:
+# command line:
+# dials.detect_blanks  '2_SWEEP1_strong.expt' '2_SWEEP1_strong.refl' 'json=3_blanks.json' 'phi_step=2.0' 'counts_fractional_loss=0.1' 'misigma_fractional_loss=0.1'
+#
+# timing information:
+#   time since object initialization: 3.6 seconds
+#   time since process start: 3.6 seconds
+Logfile: dials.search_beam_position -> /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/4_dials.search_beam_position.log
+Running /home/Data/local/opt/xtal/ccp4-8.0/bin/dials.search_beam_position
+Last 26 lines of /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/4_dials.search_beam_position.log:
+DIALS (2018) Acta Cryst. D74, 85-97. https://doi.org/10.1107/S2059798317017235
+The following parameters have been modified:
+
+nproc = 90
+output {
+  experiments = "/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/4_optimised.expt"
+}
+input {
+  experiments = 2_SWEEP1_strong.expt
+  reflections = /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/2_SWEEP1_strong.refl
+}
+
+Selecting subset of 10000 reflections for analysis
+Running DPS using 10000 reflections
+Found 18 solutions with max unit cell 199.43 Angstroms.
+Old beam centre: 157.58, 158.91 mm (2101.1, 2118.8 px)
+New beam centre: 157.01, 159.13 mm (2093.4, 2121.7 px)
+Shift: 0.57, -0.22 mm (7.6, -3.0 px)
+
+Saving optimised experiments to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/4_optimised.expt
+# command line:
+# dials.search_beam_position  '2_SWEEP1_strong.expt' '2_SWEEP1_strong.refl' 'nproc=90' 'output.experiments=4_optimised.expt'
+#
+# timing information:
+#   time since object initialization: 17.5 seconds
+#   time since process start: 17.5 seconds
+------------------- Autoindexing SWEEP1 --------------------
+Logfile: dials.index -> /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/5_dials.index.log
+Running dials.index
+Last 50 lines of /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/5_dials.index.log:
+|        |        |     (mm) |     (mm) |      (deg) |
+|--------+--------+----------+----------+------------|
+|      0 |  18000 |  0.12002 |  0.13321 |    0.1613  |
+|      1 |  18000 |  0.11906 |  0.13226 |    0.15975 |
+|      2 |  18000 |  0.11881 |  0.132   |    0.15921 |
+|      3 |  18000 |  0.11851 |  0.13148 |    0.15825 |
+|      4 |  18000 |  0.11821 |  0.13082 |    0.15741 |
+|      5 |  18000 |  0.11807 |  0.13034 |    0.15711 |
+|      6 |  18000 |  0.11797 |  0.13017 |    0.15711 |
+|      7 |  18000 |  0.11791 |  0.13017 |    0.15713 |
+|      8 |  18000 |  0.1179  |  0.13018 |    0.15713 |
+|      9 |  18000 |  0.11789 |  0.13018 |    0.15713 |
++--------+--------+----------+----------+------------+
+RMSD no longer decreasing
+
+RMSDs by experiment:
++-------+--------+----------+----------+------------+
+|   Exp |   Nref |   RMSD_X |   RMSD_Y |     RMSD_Z |
+|    id |        |     (px) |     (px) |   (images) |
+|-------+--------+----------+----------+------------|
+|     0 |  18000 |   1.5719 |   1.7357 |     1.5713 |
++-------+--------+----------+----------+------------+
+
+Refined crystal models:
+model 1 (91701 reflections):
+Crystal:
+    Unit cell: 57.980(5), 58.062(5), 150.801(11), 89.9764(15), 89.9318(14), 89.9968(17)
+    Space group: P 1
+    U matrix:  {{ 0.1341, -0.8331, -0.5366},
+                {-0.4865,  0.4164, -0.7680},
+                { 0.8633,  0.3641, -0.3495}}
+    B matrix:  {{ 0.0172,  0.0000,  0.0000},
+                {-0.0000,  0.0172,  0.0000},
+                {-0.0000, -0.0000,  0.0066}}
+    A = UB:    {{ 0.0023, -0.0143, -0.0036},
+                {-0.0084,  0.0072, -0.0051},
+                { 0.0149,  0.0063, -0.0023}}
++------------+-------------+---------------+-------------+
+|   Imageset |   # indexed |   # unindexed | % indexed   |
+|------------+-------------+---------------+-------------|
+|          0 |       91701 |         32823 | 73.6%       |
++------------+-------------+---------------+-------------+
+Saving refined experiments to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/5_indexed.expt
+Saving refined reflections to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/5_indexed.refl
+# command line:
+# dials.index  '4_optimised.expt' '2_SWEEP1_strong.refl' 'indexing.method=fft3d' 'indexing.nproc=90' 'reflections_per_degree=100' 'close_to_spindle_cutoff=0.020000' 'outlier.algorithm=auto' 'output.experiments=5_indexed.expt' 'output.reflections=5_indexed.refl'
+#
+# timing information:
+#   time since object initialization: 28.8 seconds
+#   time since process start: 28.8 seconds
+Logfile: dials.report -> /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/6_dials.report_REPORT.log
+Running dials.report
+Logfile: dials.refine_bravais_settings -> /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/7_dials.refine_bravais_settings.log
+Running dials.refine_bravais_settings
+Last 49 lines of /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/7_dials.refine_bravais_settings.log:
+DIALS (2018) Acta Cryst. D74, 85-97. https://doi.org/10.1107/S2059798317017235
+DIALS 3.8
+The following parameters have been modified:
+
+nproc = 90
+best_monoclinic_beta = False
+input {
+  experiments = /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/5_indexed.expt
+  reflections = /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/5_indexed.refl
+}
+
+Chiral space groups corresponding to each Bravais lattice:
+aP: P1
+mP: P2 P21
+mC: C2
+oP: P222 P2221 P21212 P212121
+oC: C2221 C222
+tP: P4 P41 P42 P43 P422 P4212 P4122 P41212 P4222 P42212 P4322 P43212
++------------+--------------+--------+--------------+----------+-----------+------------------------------------------+----------+------------+
+|   Solution |   Metric fit |   rmsd | min/max cc   |   #spots | lattice   | unit_cell                                |   volume | cb_op      |
+|------------+--------------+--------+--------------+----------+-----------+------------------------------------------+----------+------------|
+|   *      9 |       0.1035 |  0.173 | 0.683/0.695  |    18000 | tP        | 58.01  58.01 150.81  90.00  90.00  90.00 |   507478 | a,b,c      |
+|   *      8 |       0.1035 |  0.174 | 0.694/0.730  |    18000 | oC        | 82.04  82.03 150.81  90.00  90.00  90.00 |  1014929 | a-b,a+b,c  |
+|   *      7 |       0.1035 |  0.175 | 0.730/0.730  |    18000 | mC        | 82.01  82.01 150.76  90.00  89.96  90.00 |  1014065 | a-b,a+b,c  |
+|   *      6 |       0.0866 |  0.17  | 0.706/0.706  |    18000 | mC        | 82.05  82.05 150.81  90.00  89.92  90.00 |  1015278 | a+b,-a+b,c |
+|   *      5 |       0.0721 |  0.174 | 0.694/0.753  |    18000 | oP        | 57.99  58.06 150.81  90.00  90.00  90.00 |   507721 | a,b,c      |
+|   *      4 |       0.0682 |  0.174 | 0.728/0.728  |    18000 | mP        | 58.08  58.01 150.87  90.00  89.97  90.00 |   508361 | -b,-a,-c   |
+|   *      3 |       0.0721 |  0.175 | 0.694/0.694  |    18000 | mP        | 57.99 150.82  58.06  90.00  90.00  90.00 |   507851 | -a,-c,-b   |
+|   *      2 |       0.0238 |  0.171 | 0.753/0.753  |    18000 | mP        | 57.95  58.01 150.70  90.00  89.93  90.00 |   506655 | a,b,c      |
+|   *      1 |       0      |  0.171 | -/-          |    18000 | aP        | 57.98  58.05 150.79  89.97  89.93  89.99 |   507558 | a,b,c      |
++------------+--------------+--------+--------------+----------+-----------+------------------------------------------+----------+------------+
+* = recommended solution
+
+Saving summary as bravais_summary.json
+Saving solution 9 as bravais_setting_9.expt
+Saving solution 8 as bravais_setting_8.expt
+Saving solution 7 as bravais_setting_7.expt
+Saving solution 6 as bravais_setting_6.expt
+Saving solution 5 as bravais_setting_5.expt
+Saving solution 4 as bravais_setting_4.expt
+Saving solution 3 as bravais_setting_3.expt
+Saving solution 2 as bravais_setting_2.expt
+Saving solution 1 as bravais_setting_1.expt
+# command line:
+# dials.refine_bravais_settings  '5_indexed.expt' '5_indexed.refl' 'nproc=90' 'best_monoclinic_beta=False' 'close_to_spindle_cutoff=0.020000'
+#
+# timing information:
+#   time since object initialization: 12.7 seconds
+#   time since process start: 12.7 seconds
+Logfile: dials.reindex -> /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/8_dials.reindex.log
+Running dials.reindex
+Last 17 lines of /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/8_dials.reindex.log:
+The following parameters have been modified:
+
+space_group = "P 4"
+output {
+  reflections = "/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/8_reindexed.refl"
+}
+input {
+  reflections = /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/5_indexed.refl
+}
+
+Saving reindexed reflections to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/8_reindexed.refl
+# command line:
+# dials.reindex  '5_indexed.refl' 'output.reflections=8_reindexed.refl' 'change_of_basis_op=a,b,c' 'space_group=75'
+#
+# timing information:
+#   time since object initialization: 4.9 seconds
+#   time since process start: 4.9 seconds
+Low resolution limit assigned as: 56.90
+All possible indexing solutions:
+tP  58.01  58.01 150.81  90.00  90.00  90.00
+oC  82.04  82.03 150.81  90.00  90.00  90.00
+oP  57.99  58.06 150.81  90.00  90.00  90.00
+mC  82.05  82.05 150.81  90.00  89.92  90.00
+mP  57.95  58.01 150.70  90.00  89.93  90.00
+aP  57.98  58.05 150.79  89.97  89.93  89.99
+Indexing solution:
+tP  58.01  58.01 150.81  90.00  90.00  90.00
+Low resolution set to: 56.90123431196363
+Resetting refiner done as prepare not done
+Called refiner done from xia2.Schema.Interfaces.Refiner 195 (False)
+Resetting refiner finish done as refinement not done
+Called refiner finish done from xia2.Schema.Interfaces.Refiner 201 (False)
+Resetting refiner done as prepare not done
+Called refiner done from xia2.Schema.Interfaces.Refiner 195 (False)
+Logfile: dials.refine -> /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/refine/9_dials.refine_REFINE.log
+Running dials.refine
+Last 50 lines of /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/refine/9_dials.refine_REFINE.log:
+Performing refinement of a single Experiment...
+
+Refinement steps:
++--------+--------+----------+----------+------------+
+|   Step |   Nref |   RMSD_X |   RMSD_Y |   RMSD_Phi |
+|        |        |     (mm) |     (mm) |      (deg) |
+|--------+--------+----------+----------+------------|
+|      0 |  18000 | 0.098327 |  0.1172  |    0.13347 |
+|      1 |  18000 | 0.098081 |  0.11728 |    0.1334  |
+|      2 |  18000 | 0.097845 |  0.11745 |    0.13318 |
+|      3 |  18000 | 0.097658 |  0.11768 |    0.13282 |
+|      4 |  18000 | 0.097682 |  0.11783 |    0.13238 |
+|      5 |  18000 | 0.097848 |  0.11784 |    0.13203 |
+|      6 |  18000 | 0.097994 |  0.11776 |    0.13189 |
+|      7 |  18000 | 0.098061 |  0.11771 |    0.13188 |
+|      8 |  18000 | 0.098075 |  0.11769 |    0.13188 |
+|      9 |  18000 | 0.098076 |  0.11769 |    0.13188 |
++--------+--------+----------+----------+------------+
+RMSD no longer decreasing
+
+RMSDs by experiment:
++-------+--------+----------+----------+------------+
+|   Exp |   Nref |   RMSD_X |   RMSD_Y |     RMSD_Z |
+|    id |        |     (px) |     (px) |   (images) |
+|-------+--------+----------+----------+------------|
+|     0 |  18000 |   1.3077 |   1.5692 |     1.3188 |
++-------+--------+----------+----------+------------+
+Updating predictions for indexed reflections
+
+Final refined crystal model:
+Crystal:
+    Unit cell: 58.015(4), 58.015(4), 150.828(10), 90.0, 90.0, 90.0
+    Space group: P 4
+    U matrix:  {{ 0.1348, -0.8330, -0.5365},
+                {-0.4863,  0.4162, -0.7683},
+                { 0.8633,  0.3645, -0.3490}}
+    B matrix:  {{ 0.0172,  0.0000,  0.0000},
+                { 0.0000,  0.0172,  0.0000},
+                { 0.0000,  0.0000,  0.0066}}
+    A = UB:    {{ 0.0023, -0.0144, -0.0036},
+                {-0.0084,  0.0072, -0.0051},
+                { 0.0149,  0.0063, -0.0023}}
+Saving refined experiments to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/refine/9_refined.expt
+Saving reflections with updated predictions to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/refine/9_refined.refl
+# command line:
+# dials.refine  '/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/bravais_setting_9.expt' '/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/8_reindexed.refl' 'scan_varying=False' 'close_to_spindle_cutoff=0.020000' 'outlier.algorithm=auto' 'output.experiments=9_refined.expt' 'output.reflections=9_refined.refl' 'reflections_per_degree=100' 'unit_cell.smoother.interval_width_degrees=36' 'orientation.smoother.interval_width_degrees=36'
+#
+# timing information:
+#   time since object initialization: 10.6 seconds
+#   time since process start: 10.6 seconds
+Logfile: dials.refine -> /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/refine/10_dials.refine_REFINE.log
+Running dials.refine
+Last 50 lines of /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/refine/10_dials.refine_REFINE.log:
+Refinement steps:
++--------+--------+----------+----------+------------+
+|   Step |   Nref |   RMSD_X |   RMSD_Y |   RMSD_Phi |
+|        |        |     (mm) |     (mm) |      (deg) |
+|--------+--------+----------+----------+------------|
+|      0 |  18000 | 0.097608 | 0.11806  |   0.13257  |
+|      1 |  18000 | 0.093855 | 0.090145 |   0.13172  |
+|      2 |  18000 | 0.087552 | 0.083755 |   0.12305  |
+|      3 |  18000 | 0.076686 | 0.07542  |   0.10466  |
+|      4 |  18000 | 0.066464 | 0.069331 |   0.081519 |
+|      5 |  18000 | 0.061815 | 0.066946 |   0.070133 |
+|      6 |  18000 | 0.059938 | 0.065562 |   0.068227 |
+|      7 |  18000 | 0.059453 | 0.065012 |   0.067552 |
+|      8 |  18000 | 0.059458 | 0.064948 |   0.067225 |
+|      9 |  18000 | 0.059461 | 0.064952 |   0.06717  |
+|     10 |  18000 | 0.059459 | 0.064946 |   0.067166 |
++--------+--------+----------+----------+------------+
+RMSD no longer decreasing
+
+RMSDs by experiment:
++-------+--------+----------+----------+------------+
+|   Exp |   Nref |   RMSD_X |   RMSD_Y |     RMSD_Z |
+|    id |        |     (px) |     (px) |   (images) |
+|-------+--------+----------+----------+------------|
+|     0 |  18000 |  0.79279 |  0.86595 |    0.67166 |
++-------+--------+----------+----------+------------+
+Updating predictions for indexed reflections
+
+Final refined crystal model:
+Crystal:
+    Unit cell: 58.015(4), 58.015(4), 150.828(10), 90.0, 90.0, 90.0
+    Space group: P 4
+    U matrix:  {{ 0.1348, -0.8330, -0.5365},
+                {-0.4863,  0.4162, -0.7683},
+                { 0.8633,  0.3645, -0.3490}}
+    B matrix:  {{ 0.0172,  0.0000,  0.0000},
+                { 0.0000,  0.0172,  0.0000},
+                {-0.0000,  0.0000,  0.0066}}
+    A = UB:    {{ 0.0023, -0.0144, -0.0036},
+                {-0.0084,  0.0072, -0.0051},
+                { 0.0149,  0.0063, -0.0023}}
+    A sampled at 1801 scan points
+Saving refined experiments to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/refine/10_refined.expt
+Saving reflections with updated predictions to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/refine/10_refined.refl
+# command line:
+# dials.refine  '9_refined.expt' '9_refined.refl' 'scan_varying=True' 'close_to_spindle_cutoff=0.020000' 'outlier.algorithm=auto' 'output.experiments=10_refined.expt' 'output.reflections=10_refined.refl' 'reflections_per_degree=100' 'unit_cell.smoother.interval_width_degrees=36' 'orientation.smoother.interval_width_degrees=36'
+#
+# timing information:
+#   time since object initialization: 17.3 seconds
+#   time since process start: 17.3 seconds
+Logfile: dials.report -> /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/refine/11_dials.report_REPORT.log
+Running dials.report
+Files available at the end of DIALS integrate prepare:
+Doing some integration...
+-------------------- Integrating SWEEP1 --------------------
+Logfile: dials.integrate -> /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/12_dials.integrate_INTEGRATE.log
+Overriding high resolution limit: 0.000000 => 1.468879
+Running dials.integrate
+Last 50 lines of /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/12_dials.integrate_INTEGRATE.log:
+|    0 |    2.51 |    31986 |     4026 |     5359 |       0 |   32086 |   31392 |  0.13 |     8.69 |     9.31 |     0.77 |      0.55 |
+|    0 |    2.77 |    31859 |     4129 |     6832 |       0 |   31201 |   30671 |  0.17 |    14.06 |    15.19 |     0.81 |      0.66 |
+|    0 |    3.17 |    31991 |     4151 |     7721 |       0 |   30514 |   30323 |  0.21 |    27.22 |    29.33 |     0.83 |      0.88 |
+|    0 |    3.99 |    32255 |     3848 |     4795 |       0 |   32456 |   31713 |  0.16 |    43.43 |    47.26 |     0.8  |      1.02 |
++------+---------+----------+----------+----------+---------+---------+---------+-------+----------+----------+----------+-----------+
+
+ Summary for experiment 0
++---------------------------------------+-----------+----------+--------+
+| Item                                  |   Overall |      Low |   High |
+|---------------------------------------+-----------+----------+--------|
+| dmin                                  |      1.47 |     3.99 |   1.47 |
+| dmax                                  |     54.18 |    54.18 |   1.49 |
+| number fully recorded                 | 369012    | 32255    | 254    |
+| number partially recorded             |  38913    |  3848    |   5    |
+| number with invalid background pixels |  74243    |  4735    | 243    |
+| number with invalid foreground pixels |  43586    |  3207    | 133    |
+| number with overloaded pixels         |  67634    |  4795    | 166    |
+| number in powder rings                |      0    |     0    |   0    |
+| number processed with summation       | 359379    | 32456    | 126    |
+| number processed with profile fitting | 356767    | 31713    | 207    |
+| number failed in background modelling |   2042    |   398    |   0    |
+| number failed in summation            |  43586    |  3207    | 133    |
+| number failed in profile fitting      |  46198    |  3950    |  52    |
+| ibg                                   |      0.11 |     0.16 |   0.03 |
+| i/sigi (summation)                    |     10.51 |    43.43 |   0.39 |
+| i/sigi (profile fitting)              |     11.09 |    47.26 |   0.34 |
+| cc prf                                |      0.69 |     0.8  |   0.48 |
+| cc_pearson sum/prf                    |      0.53 |     0.48 |   0.53 |
+| cc_spearman sum/prf                   |      0.95 |     0.97 |   0.53 |
++---------------------------------------+-----------+----------+--------+
+
+Timing information for integration
++-------------------+------------------+
+| Read time         | 6563.51 seconds  |
+| Extract time      | 144.10 seconds   |
+| Pre-process time  | 0.48 seconds     |
+| Process time      | 1372.28 seconds  |
+| Post-process time | 0.00 seconds     |
+| Total time        | 10015.18 seconds |
++-------------------+------------------+
+
+Removing 38954 unintegrated reflections of 407925 total
+Saving 426844 reflections to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/12_integrated.refl
+Saving the experiments to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/12_integrated.expt
+# command line:
+# dials.integrate  'input.experiments=/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/refine/10_refined.expt' 'nproc=90' 'input.reflections=/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/refine/10_refined.refl' 'output.experiments=12_integrated.expt' 'output.reflections=12_integrated.refl' 'output.report=12_integration_report.json' 'output.include_bad_reference=True' 'debug.reference.output=True' 'profile.fitting=True' 'gaussian_rs.scan_varying=False' 'outlier.algorithm=null' 'background.algorithm=glm' 'prediction.d_max=56.901234' 'prediction.d_min=1.468879'
+#
+# timing information:
+#   time since object initialization: 332.7 seconds
+#   time since process start: 332.7 seconds
+Processed batches 2 to 1801
+Standard Deviation in pixel range: 0.42 0.84
+Integration status per image (60/record):
+%ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+"o" => good        "%" => ok        "!" => bad rmsd
+"O" => overloaded  "#" => many bad  "." => weak
+"@" => abandoned
+Logfile: dials.report -> /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/13_dials.report_REPORT.log
+Running dials.report
+Last 50 lines of /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/13_dials.report_REPORT.log:
+
+output {
+  html = "/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/13_dials.integrate.report.html"
+}
+input {
+  experiments = /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/12_integrated.expt
+  reflections = /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/12_integrated.refl
+}
+
+Analysing strong spots
+ Selected 125228 strong reflections........................................0.06s
+Analysing reflection centroids
+ Removing 88561 partial reflections
+ Selected 329065 summation-integrated reflections..........................0.09s
+ Analysing centroid differences with I/Sigma > 10
+ Analysing centroid differences in x/y with I/Sigma > 10
+ Analysing centroid differences in z with I/Sigma > 10
+ Analysing centroid differences vs phi with I/Sigma > 10
+Analysing reflection intensities
+ Removing 41542 reflections with intensity <= 0
+ Selected 327429 integrated reflections....................................0.11s
+ Analysing distribution of I/Sigma
+ Analysing distribution of I/Sigma vs xy
+ Analysing distribution of I/Sigma vs xy
+ Analysing distribution of I/Sigma vs z
+ Analysing distribution of partialities
+ Analysing QE map
+Analysing reference profiles
+ Selected 347175 integrated reflections....................................0.09s
+ Analysing reference profile distribution vs x/y
+ Analysing reference profile distribution vs z
+ Analysing reflection correlations vs resolution
+ Analysing reflection profile correlations
+ Analysing reflection profile correlations vs x/y
+ Analysing reflection profile correlations vs z
+ Analysing reflection profile correlations vs I/Sigma
+ Analysing reflection profile correlations
+ Analysing reflection profile correlations vs x/y
+ Analysing reflection profile correlations vs z
+ Analysing reflection profile correlations vs I/Sigma
+Analysing scan-varying crystal model
+Analysing scaling model
+Calculating and generating merging statistics plots
+Writing html report to: /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/13_dials.integrate.report.html
+# command line:
+# dials.report  '12_integrated.expt' '12_integrated.refl' 'output.html=13_dials.integrate.report.html'
+#
+# timing information:
+#   time since object initialization: 7.8 seconds
+#   time since process start: 7.8 seconds
+Mosaic spread: 0.150 < 0.150 < 0.150
+Not reindexing to spacegroup 0 (None)
+Scaler reset
+Using DIALS Scaler
+Scaler reset
+Resetting Scaler done as prepare not done
+Called scaler done from xia2.Schema.Interfaces.Scaler 304 (False)
+Resetting scaler finish done as scaling not done
+Called scaler finish done from xia2.Schema.Interfaces.Scaler 310 (False)
+Resetting Scaler done as prepare not done
+Called scaler done from xia2.Schema.Interfaces.Scaler 304 (False)
+Resetting scaler finish done as scaling not done
+Called scaler finish done from xia2.Schema.Interfaces.Scaler 310 (False)
+Resetting Scaler done as prepare not done
+Called scaler done from xia2.Schema.Interfaces.Scaler 304 (False)
+-------------------- Preparing DEFAULT ---------------------
+adding data from:              DEFAULT/NATIVE/SWEEP1
+Logfile: dials.symmetry -> /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/14_dials.symmetry.log
+Last 50 lines of /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/14_dials.symmetry.log:
+Best solution: P 4/m m m
+Unit cell: 
+Reindex operator: a,b,c
+Laue group probability: 0.988
+Laue group confidence: 0.986
+
++-------------------+--------------------------+
+| Patterson group   | Corresponding MX group   |
+|-------------------+--------------------------|
+| P 4/m m m         | P 4 2 2                  |
++-------------------+--------------------------+
+================================================================================
+
+Analysing systematic absences
+
+Laue group: P 4/m m m
+Performing systematic absence checks on unscaled profile-integrated data
+Read 394021 predicted reflections
+Selected 356767 profile integrated reflections
+Removed 42411 reflections with d <= 1.77
+Combined 9387 partial reflections with other partial reflections
+Removed 4541 reflections below partiality threshold
+Laue group: P 4/m m m
++--------------+---------+---------------+--------------+---------------+--------------+-------------------+------------------+
+| Screw axis   |   Score |   No. present |   No. absent |   <I> present |   <I> absent |   <I/sig> present |   <I/sig> absent |
+|--------------+---------+---------------+--------------+---------------+--------------+-------------------+------------------|
+| 41c          |       1 |            21 |           62 |      1077.61  |       -0.152 |            86.239 |            0.01  |
+| 21a          |       1 |            16 |           15 |       288.074 |        0.125 |            56.995 |            0.061 |
+| 42c          |       1 |            41 |           42 |       551.997 |       -0.272 |            44.19  |           -0.004 |
++--------------+---------+---------------+--------------+---------------+--------------+-------------------+------------------+
++---------------+---------+
+| Space group   |   score |
+|---------------+---------|
+| P 4 2 2       |       0 |
+| P 4 21 2      |       0 |
+| P 41 2 2      |       0 |
+| P 42 2 2      |       0 |
+| P 41 21 2     |       1 |
+| P 42 21 2     |       0 |
++---------------+---------+
+Recommended space group: P 41 21 2
+Space group with equivalent score (enantiomorphic pair): P 43 21 2
+Saving reindexed experiments to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/14_symmetrized.expt in space group P 41 21 2
+Saving 426844 reindexed reflections to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/14_symmetrized.refl
+# command line:
+# dials.symmetry  '/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/12_integrated.expt' '/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/12_integrated.refl' 'output.experiments=14_symmetrized.expt' 'output.reflections=14_symmetrized.refl' 'relative_length_tolerance=0.05' 'absolute_angle_tolerance=2' 'best_monoclinic_beta=False' 'output.json=14_dials_symmetry.json'
+#
+# timing information:
+#   time since object initialization: 28.9 seconds
+#   time since process start: 28.9 seconds
+Possible lattices (dials.symmetry):
+tP oC oP mC mP aP
+Agreed lattice tP
+Symmetry analysis of /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/12_integrated.expt/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/12_integrated.refl
+Pointgroup: P 4 2 2 (x,y,z)
+Pointgroup: P 4 2 2 (x,y,z)
+Set spacegroup as 89
+Reindexing to x,y,z (compose=True) because setting point group
+setting integrator output format to pickle
+Reindexing to spacegroup 89 (x,y,z)
+Logfile: dials.reindex -> /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/15_dials.reindex.log
+Running dials.reindex
+Last 21 lines of /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/15_dials.reindex.log:
+The following parameters have been modified:
+
+change_of_basis_op = "x,y,z"
+space_group = "P 4 2 2"
+output {
+  experiments = "/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/15_reindexed.expt"
+  reflections = "/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/15_reindexed.refl"
+}
+input {
+  experiments = /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/12_integrated.expt
+  reflections = /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/12_integrated.refl
+}
+
+Saving reindexed experimental models to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/15_reindexed.expt
+Saving reindexed reflections to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/15_reindexed.refl
+# command line:
+# dials.reindex  '12_integrated.expt' 'output.experiments=15_reindexed.expt' '12_integrated.refl' 'output.reflections=15_reindexed.refl' 'change_of_basis_op=x,y,z' 'space_group=89'
+#
+# timing information:
+#   time since object initialization: 6.1 seconds
+#   time since process start: 6.1 seconds
+Setting batches for sweep SWEEP1: 1 to 1800
+--------------------- Scaling DEFAULT ----------------------
+Logfile: dials.scale -> /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/16_dials.scale.log
+Last 50 lines of /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/16_dials.scale.log:
+  2.00   1.92  24931   2222   11.22 100.00      18.4     5.7    0.255    0.267    0.078    0.172   0.970*  -0.179
+  1.92   1.86  19117   2203    8.68 100.00      12.4     3.9    0.284    0.302    0.100    0.230   0.962*  -0.109
+  1.86   1.80  15471   2198    7.04  99.95       9.0     2.8    0.315    0.339    0.124    0.279   0.952*  -0.099
+  1.80   1.75  12698   2170    5.85  98.59       6.8     2.1    0.351    0.384    0.152    0.365   0.920*  -0.033
+  1.75   1.70  10318   2069    4.99  94.30       5.4     1.6    0.389    0.433    0.182    0.458   0.895*  -0.072
+  1.70   1.66   8122   1907    4.26  87.04       4.3     1.2    0.444    0.502    0.226    0.562   0.863*  -0.113
+  1.66   1.62   6372   1695    3.76  76.66       3.8     1.0    0.490    0.561    0.264    0.712   0.865*   0.019
+  1.62   1.59   4977   1466    3.39  66.67       3.2     0.8    0.529    0.614    0.301    0.817   0.816*   0.004
+  1.59   1.55   3496   1257    2.78  57.93       2.6     0.6    0.607    0.733    0.398    1.082   0.699*  -0.175
+  1.55   1.53   2178    997    2.18  45.69       2.3     0.4    0.682    0.861    0.513    1.285   0.598*  -0.134
+  1.53   1.50    979    642    1.52  29.22       2.0     0.3    0.666    0.881    0.569    1.170   0.505*  -0.375
+  1.50   1.47    269    224    1.20  10.27       2.0     0.2    0.665    0.899    0.602    1.303   0.438*   0.000
+ 54.15   1.47 342419  37358    9.17  83.64      72.2     9.2    0.124    0.130    0.037    0.068   0.997*  -0.389
+
+
+
+            -------------Summary of merging statistics--------------           
+
+                                             Overall    Low     High
+High resolution limit                           1.47    4.00    1.47
+Low resolution limit                           54.15   54.18    1.50
+Completeness                                   83.6   100.0    10.3
+Multiplicity                                    9.2    11.9     1.2
+I/sigma                                         9.2    28.7     0.2
+Rmerge(I)                                     0.124   0.091   0.665
+Rmerge(I+/-)                                  0.122   0.090   0.457
+Rmeas(I)                                      0.130   0.095   0.899
+Rmeas(I+/-)                                   0.132   0.097   0.642
+Rpim(I)                                       0.037   0.027   0.602
+Rpim(I+/-)                                    0.051   0.036   0.451
+CC half                                       0.997   0.997   0.438
+Anomalous completeness                         77.1   100.0     0.8
+Anomalous multiplicity                          5.1     7.1     1.1
+Anomalous correlation                        -0.389  -0.462   0.000
+Anomalous slope                               0.486
+dF/F                                          0.067
+dI/s(dI)                                      0.503
+Total observations                           342419   29992     269
+Total unique                                  37358    2514     224
+
+Writing html report to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/16_scaling.html
+Saving the scaled experiments to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/16_scaled.expt
+Saving the scaled reflections to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/16_scaled.refl
+See dials.github.io/dials_scale_user_guide.html for more info on scaling options
+# command line:
+# dials.scale  '/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/15_reindexed.expt' '/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/15_reindexed.refl' 'nproc=90' 'model=physical' 'physical.decay_correction=True' 'physical.absorption_correction=True' 'physical.decay_interval=20' 'physical.scale_interval=15' 'full_matrix=True' 'error_model=basic' 'error_model.grouping=combined' 'outlier_rejection=standard' 'partiality_cutoff=0.4' 'outlier_zmax=6.0' 'overwrite_existing_models=True' 'output.html=16_scaling.html' 'output.experiments=16_scaled.expt' 'output.reflections=16_scaled.refl'
+#
+# timing information:
+#   time since object initialization: 54.3 seconds
+#   time since process start: 54.1 seconds
+dials.scale status: OK
+Logfile: dials.estimate_resolution -> /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/17_dials.estimate_resolution.log
+Resolution analysis: /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/16_scaled.expt /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/16_scaled.refl nbins=100 rmerge=None completeness=None cc_half=0.3 cc_half_fit=tanh cc_half_significance_level=0.1 isigma=None misigma=None batch_range=1,1800
+Last 26 lines of /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/17_dials.estimate_resolution.log:
+The following parameters have been modified:
+
+resolution {
+  batch_range = 1 1800
+}
+output {
+  html = "/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/17_dials.estimate_resolution.html"
+  json = "/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/17_dials.estimate_resolution.json"
+}
+input {
+  experiments = /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/16_scaled.expt
+  reflections = /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/16_scaled.refl
+}
+
+DIALS (2018) Acta Cryst. D74, 85-97. https://doi.org/10.1107/S2059798317017235
+DIALS 3.8
+Read 384634 predicted reflections
+Selected 342419 scaled reflections
+Removing 53 Wilson outliers with E^2 >= 16.0
+Resolution cc_half:       1.47
+# command line:
+# dials.estimate_resolution  '16_scaled.expt' '16_scaled.refl' 'nbins=100' 'rmerge=None' 'completeness=None' 'cc_half=0.3' 'cc_half_fit=tanh' 'cc_half_significance_level=0.1' 'isigma=None' 'misigma=None' 'batch_range=1,1800' 'output.html=17_dials.estimate_resolution.html' 'output.json=17_dials.estimate_resolution.json'
+#
+# timing information:
+#   time since object initialization: 4.3 seconds
+#   time since process start: 4.3 seconds
+Resolution for sweep SWEEP1: 1.47
+Called scaler done from xia2.Modules.Scaler.CommonScaler 1570 (False)
+Resolution for sweep NATIVE/SWEEP1: 1.47 (cc_half > 0.3)
+Scaler highest resolution set to  1.47
+Returning as scaling not finished...
+--------------------- Scaling DEFAULT ----------------------
+Logfile: dials.scale -> /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/18_dials.scale.log
+Last 50 lines of /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/18_dials.scale.log:
+  2.00   1.92  25178   2222   11.33 100.00      17.7     5.4    0.268    0.281    0.082    0.190   0.965*  -0.163
+  1.92   1.86  19252   2203    8.74 100.00      11.9     3.7    0.298    0.316    0.104    0.244   0.951*  -0.124
+  1.86   1.80  15501   2198    7.05  99.95       8.8     2.6    0.317    0.342    0.124    0.277   0.948*  -0.119
+  1.80   1.75  12698   2170    5.85  98.59       6.7     1.9    0.349    0.382    0.151    0.358   0.923*  -0.034
+  1.75   1.70  10318   2069    4.99  94.30       5.3     1.5    0.387    0.431    0.181    0.452   0.903*  -0.082
+  1.70   1.66   8122   1907    4.26  87.04       4.2     1.1    0.444    0.501    0.225    0.552   0.865*  -0.118
+  1.66   1.62   6372   1695    3.76  76.66       3.8     0.9    0.487    0.558    0.263    0.694   0.867*  -0.006
+  1.62   1.59   4977   1466    3.39  66.67       3.2     0.7    0.528    0.613    0.300    0.791   0.816*  -0.012
+  1.59   1.55   3496   1257    2.78  57.93       2.6     0.5    0.601    0.725    0.393    1.034   0.713*  -0.169
+  1.55   1.53   2178    997    2.18  45.69       2.3     0.4    0.676    0.853    0.507    1.227   0.610*  -0.135
+  1.53   1.50    979    642    1.52  29.22       2.0     0.3    0.658    0.870    0.561    1.134   0.507*  -0.496
+  1.50   1.47    269    224    1.20  10.27       2.0     0.2    0.660    0.892    0.595    1.299   0.422*   0.000
+ 54.15   1.47 345680  37358    9.25  83.64      72.5     9.2    0.124    0.129    0.037    0.074   0.997*  -0.363
+
+
+
+            -------------Summary of merging statistics--------------           
+
+                                             Overall    Low     High
+High resolution limit                           1.47    4.00    1.47
+Low resolution limit                           54.15   54.18    1.50
+Completeness                                   83.6   100.0    10.3
+Multiplicity                                    9.3    12.1     1.2
+I/sigma                                         9.2    30.4     0.2
+Rmerge(I)                                     0.124   0.082   0.660
+Rmerge(I+/-)                                  0.121   0.081   0.456
+Rmeas(I)                                      0.129   0.085   0.892
+Rmeas(I+/-)                                   0.131   0.087   0.640
+Rpim(I)                                       0.037   0.024   0.595
+Rpim(I+/-)                                    0.050   0.032   0.450
+CC half                                       0.997   0.996   0.422
+Anomalous completeness                         77.1   100.0     0.8
+Anomalous multiplicity                          5.1     7.2     1.1
+Anomalous correlation                        -0.363  -0.448   0.000
+Anomalous slope                               0.471
+dF/F                                          0.071
+dI/s(dI)                                      0.538
+Total observations                           345680   30482     269
+Total unique                                  37358    2514     224
+
+Writing html report to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/18_scaling.html
+Saving the scaled experiments to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/18_scaled.expt
+Saving the scaled reflections to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/18_scaled.refl
+See dials.github.io/dials_scale_user_guide.html for more info on scaling options
+# command line:
+# dials.scale  '16_scaled.expt' '16_scaled.refl' 'nproc=90' 'model=physical' 'physical.decay_correction=True' 'physical.absorption_correction=True' 'physical.decay_interval=20' 'physical.scale_interval=15' 'full_matrix=True' 'error_model=basic' 'error_model.grouping=combined' 'outlier_rejection=standard' 'partiality_cutoff=0.4' 'cut_data.d_min=1.47' 'outlier_zmax=6.0' 'output.html=18_scaling.html' 'output.experiments=18_scaled.expt' 'output.reflections=18_scaled.refl'
+#
+# timing information:
+#   time since object initialization: 34.6 seconds
+#   time since process start: 34.4 seconds
+dials.scale status: OK
+Scaler highest resolution set to 100.00
+---------------- Systematic absences check -----------------
+Logfile: dials.symmetry -> /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/19_dials.symmetry.log
+Last 50 lines of /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/19_dials.symmetry.log:
+input {
+  experiments = /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/18_scaled.expt
+  reflections = /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/18_scaled.refl
+}
+
+================================================================================
+
+Analysing systematic absences
+
+Laue group: P 4/m m m
+Read 384634 predicted reflections
+Selected 345680 scaled reflections
+Combined 67 partial reflections with other partial reflections
+Removing 52 Wilson outliers with E^2 >= 16.0
+Resolution estimate from <I>/<Ï(I)> > 4.0 : 1.89
+Resolution estimate from CCÂ½ > 0.60: 1.51
+Performing systematic absence checks on scaled data
+Read 384634 predicted reflections
+Selected 345680 scaled reflections
+Removed 641 reflections with d <= 1.51
+Combined 67 partial reflections with other partial reflections
+Removed 4339 reflections below partiality threshold
+Laue group: P 4/m m m
++--------------+---------+---------------+--------------+---------------+--------------+-------------------+------------------+
+| Screw axis   |   Score |   No. present |   No. absent |   <I> present |   <I> absent |   <I/sig> present |   <I/sig> absent |
+|--------------+---------+---------------+--------------+---------------+--------------+-------------------+------------------|
+| 41c          |       1 |            23 |           70 |       885.936 |       -0.209 |            10.059 |           -0.002 |
+| 21a          |       1 |            16 |           16 |       250.187 |        0.196 |            14.169 |            0.049 |
+| 42c          |       1 |            46 |           47 |       442.978 |       -0.322 |             5.034 |           -0.008 |
++--------------+---------+---------------+--------------+---------------+--------------+-------------------+------------------+
++---------------+---------+
+| Space group   |   score |
+|---------------+---------|
+| P 4 2 2       |       0 |
+| P 4 21 2      |       0 |
+| P 41 2 2      |       0 |
+| P 42 2 2      |       0 |
+| P 41 21 2     |       1 |
+| P 42 21 2     |       0 |
++---------------+---------+
+Recommended space group: P 41 21 2
+Space group with equivalent score (enantiomorphic pair): P 43 21 2
+Saving reindexed experiments to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/19_symmetrized.expt in space group P 41 21 2
+Saving 417457 reindexed reflections to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/19_symmetrized.refl
+# command line:
+# dials.symmetry  '18_scaled.expt' '18_scaled.refl' 'output.experiments=19_symmetrized.expt' 'output.reflections=19_symmetrized.refl' 'laue_group=None' 'relative_length_tolerance=0.05' 'absolute_angle_tolerance=2' 'best_monoclinic_beta=False' 'output.json=19_dials_symmetry.json'
+#
+# timing information:
+#   time since object initialization: 5.5 seconds
+#   time since process start: 5.5 seconds
+Most likely space group: P 41 21 2
+------------------- Unit cell refinement -------------------
+Logfile: dials.two_theta_refine -> /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/20_dials.two_theta_refine.log
+Running dials.two_theta_refine
+Last 50 lines of /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/20_dials.two_theta_refine.log:
+|      1 |  60253 |      0.01214  |
+|      2 |  60253 |      0.012139 |
+|      3 |  60253 |      0.012139 |
++--------+--------+---------------+
+RMSD no longer decreasing
+
+RMSDs by experiment:
++-------+--------+---------------+
+|   Exp |   Nref |   RMSD_2theta |
+|    id |        |         (deg) |
+|-------+--------+---------------|
+|     0 |  60253 |      0.012139 |
++-------+--------+---------------+
+
+Final refined crystal model:
+Crystal:
+    Unit cell: 58.0406(3), 58.0406(3), 150.9030(8), 90.0, 90.0, 90.0
+    Space group: P 41 21 2
+    U matrix:  {{ 0.1348, -0.8330, -0.5365},
+                {-0.4863,  0.4162, -0.7683},
+                { 0.8633,  0.3645, -0.3490}}
+    B matrix:  {{ 0.0172,  0.0000,  0.0000},
+                { 0.0000,  0.0172,  0.0000},
+                {-0.0000,  0.0000,  0.0066}}
+    A = UB:    {{ 0.0023, -0.0144, -0.0036},
+                {-0.0084,  0.0072, -0.0051},
+                { 0.0149,  0.0063, -0.0023}}
++-------------+-------------+----------------+
+| Parameter   |       Value |   Estimated sd |
+|-------------+-------------+----------------|
+| a           |     58.0406 |        0.00026 |
+| b           |     58.0406 |        0.00026 |
+| c           |    150.903  |        0.00078 |
+| alpha       |     90      |        0       |
+| beta        |     90      |        0       |
+| gamma       |     90      |        0       |
+| volume      | 508349      |        4.38846 |
++-------------+-------------+----------------+
+Saving refined experiments to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/20_refined_cell.expt
+Saving parameter correlation plot to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/20_dials.two_theta_refine_2theta.png
+Saving parameter correlation matrices to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/20_dials.two_theta_refine.json
+Saving CIF information to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/20_dials.two_theta_refine.cif
+Saving P4P info to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/AUTOMATIC_DEFAULT.p4p
+Saving mmCIF information to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/20_dials.two_theta_refine.mmcif
+# command line:
+# dials.two_theta_refine  '19_symmetrized.expt' '18_scaled.refl' 'combine_crystal_models=True' 'output.cif=20_dials.two_theta_refine.cif' 'output.mmcif=20_dials.two_theta_refine.mmcif' 'output.p4p=AUTOMATIC_DEFAULT.p4p' 'output.correlation_plot.filename=20_dials.two_theta_refine.png' 'output.experiments=20_refined_cell.expt'
+#
+# timing information:
+#   time since object initialization: 4.6 seconds
+#   time since process start: 4.6 seconds
+Overall:  58.04  58.04 150.90  90.00  90.00  90.00
+Unit cell obtained by two-theta refinement
+ 58.041  58.041 150.903  90.000  90.000  90.000
+Logfile: dials.export -> /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/21_dials.export.log
+Exporting /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/AUTOMATIC_DEFAULT_scaled_unmerged.mtz
+Running dials.export
+Last 50 lines of /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/21_dials.export.log:
+Removed 0 intensity.scale.value reflections with I/Sig(I) < -5.0
+Saving 345613 integrated reflections to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/AUTOMATIC_DEFAULT_scaled_unmerged.mtz
+
+Title: From dials.export
+Space group symbol from file: P41212
+Space group number from file: 92
+Space group from matrices: P 41 21 2 (No. 92)
+Point group symbol from file: 422
+Number of batches: 1800
+Number of crystals: 1
+Number of Miller indices: 345613
+Resolution range: 54.1718 1.47354
+History:
+  From DIALS 3.8, run on 2024-01-29 at 14:54:40 CST  (2024-01-29 at 06:54:40 GMT)
+Crystal 1:
+  Name: DEFAULT
+  Project: AUTOMATIC
+  Id: 1
+  Unit cell: (58.0406, 58.0406, 150.903, 90, 90, 90)
+  Number of datasets: 1
+  Dataset 1:
+    Name: FROMDIALS
+    Id: 1
+    Wavelength: 0.976254
+    Number of columns: 17
+    label        #valid  %valid    min     max type
+    H            345613 100.00%   0.00   37.00 H: index h,k,l
+    K            345613 100.00%   0.00   27.00 H: index h,k,l
+    L            345613 100.00%   0.00  101.00 H: index h,k,l
+    M_ISYM       345613 100.00%   1.00   16.00 Y: M/ISYM, packed partial/reject flag and symmetry number
+    BATCH        345613 100.00%   2.00 1799.00 B: BATCH number
+    I            345613 100.00% -41.83 8789.57 J: intensity
+    SIGI         345613 100.00%   0.03  779.33 Q: standard deviation
+    SCALEUSED    345613 100.00%   0.47    2.97 R: real
+    SIGSCALEUSED 345613 100.00%   0.01    0.04 R: real
+    BG           345613 100.00%  16.15 2292.34 R: real
+    SIGBG        345613 100.00%   4.50   52.35 R: real
+    FRACTIONCALC 345613 100.00%   0.40    1.00 R: real
+    XDET         345613 100.00%   3.87 4145.91 R: real
+    YDET         345613 100.00%   4.44 4366.35 R: real
+    ROT          345613 100.00%  68.52  249.00 R: real
+    LP           345613 100.00%   0.00    0.62 R: real
+    QE           345613 100.00%   0.83    0.90 R: real
+
+# command line:
+# dials.export  'experiments=20_refined_cell.expt' 'reflections=18_scaled.refl' 'mtz.hklout=AUTOMATIC_DEFAULT_scaled_unmerged.mtz' 'mtz.crystal_name=DEFAULT' 'mtz.project_name=AUTOMATIC' 'combine_partials=true' 'partiality_threshold=0.4' 'intensity=scale'
+#
+# timing information:
+#   time since object initialization: 4.1 seconds
+#   time since process start: 4.1 seconds
+Logfile: dials.merge -> /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/22_dials.merge.log
+Merging /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/AUTOMATIC_DEFAULT_scaled.mtz
+Last 50 lines of /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/22_dials.merge.log:
+Anomalous multiplicity                          5.1     7.2     1.1
+Anomalous correlation                        -0.371  -0.432   0.000
+Anomalous slope                               0.471
+dF/F                                          0.071
+dI/s(dI)                                      0.538
+Total observations                           345613   30478     269
+Total unique                                  37358    2514     224
+
+
+Writing reflections to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/AUTOMATIC_DEFAULT_scaled.mtz
+Title: From dials.merge
+Space group symbol from file: P41212
+Space group number from file: 92
+Space group from matrices: P 41 21 2 (No. 92)
+Point group symbol from file: 422
+Number of crystals: 1
+Number of Miller indices: 37358
+Resolution range: 54.1718 1.47354
+History:
+  From DIALS 3.8, run on 2024-01-29 at 14:54:51 CST  (2024-01-29 at 06:54:51 GMT)
+Crystal 1:
+  Name: DEFAULT
+  Project: AUTOMATIC
+  Id: 1
+  Unit cell: (58.0406, 58.0406, 150.903, 90, 90, 90)
+  Number of datasets: 1
+  Dataset 1:
+    Name: NATIVE
+    Id: 1
+    Wavelength: 0.976254
+    Number of columns: 11
+    label    #valid  %valid    min     max type
+    H         37358 100.00%   0.00   37.00 H: index h,k,l
+    K         37358 100.00%   0.00   27.00 H: index h,k,l
+    L         37358 100.00%   0.00  101.00 H: index h,k,l
+    IMEAN     37358 100.00% -16.98 7605.74 J: intensity
+    SIGIMEAN  37358 100.00%   0.03  371.31 Q: standard deviation
+    I(+)      36307  97.19% -41.83 7605.74 K: I(+) or I(-)
+    SIGI(+)   36307  97.19%   0.03  371.31 M: standard deviation
+    I(-)      30865  82.62%  -9.95 5147.57 K: I(+) or I(-)
+    SIGI(-)   30865  82.62%   0.57  187.58 M: standard deviation
+    N(+)      36307  97.19%   1.00   11.00 I: integer
+    N(-)      30865  82.62%   1.00    9.00 I: integer
+
+# command line:
+# dials.merge  '18_scaled.refl' '20_refined_cell.expt' 'truncate=False' 'output.mtz=AUTOMATIC_DEFAULT_scaled.mtz' 'output.project_name=AUTOMATIC' 'output.crystal_names=DEFAULT' 'output.dataset_names=NATIVE' 'partiality_threshold=0.4' 'output.html=None'
+#
+# timing information:
+#   time since object initialization: 7.0 seconds
+#   time since process start: 7.0 seconds
+dials.merge status: OK
+Logfile: dials.export -> /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/23_dials.export.log
+Exporting /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/AUTOMATIC_DEFAULT_scaled_unmerged.mmcif
+Running dials.export
+Last 25 lines of /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/23_dials.export.log:
+DIALS (2018) Acta Cryst. D74, 85-97. https://doi.org/10.1107/S2059798317017235
+DIALS 3.8
+The following parameters have been modified:
+
+format = mtz sadabs nxs *mmcif mosflm xds xds_ascii json
+intensity = auto profile sum *scale
+mmcif {
+  hklout = "/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/AUTOMATIC_DEFAULT_scaled_unmerged.mmcif"
+  compress = gz *bz2 xz
+  pdb_version = v5 *v5_next
+}
+input {
+  experiments = /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/20_refined_cell.expt
+  reflections = /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/18_scaled.refl
+}
+
+Read 337969 predicted reflections
+Selected 336001 scaled reflections
+Wrote reflections to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/AUTOMATIC_DEFAULT_scaled_unmerged.mmcif.bz2
+# command line:
+# dials.export  'experiments=20_refined_cell.expt' 'reflections=18_scaled.refl' 'format=mmcif' 'mmcif.hklout=AUTOMATIC_DEFAULT_scaled_unmerged.mmcif' 'combine_partials=true' 'mmcif.compress=bz2' 'partiality_threshold=0.4' 'pdb_version=v5_next' 'intensity=scale'
+#
+# timing information:
+#   time since object initialization: 15.5 seconds
+#   time since process start: 15.5 seconds
+Running dials.export
+Logfile: cctbx_FrenchWilson -> /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/24_cctbx_FrenchWilson.log
+Reading reflections from /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/AUTOMATIC_DEFAULT_scaled.mtz
+Writing reflections to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/NATIVE_truncated.mtz
+Last 50 lines of /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/24_cctbx_FrenchWilson.log:
+Space group number from file: 92
+Space group from matrices: P 41 21 2 (No. 92)
+Point group symbol from file: 422
+Number of crystals: 2
+Number of Miller indices: 37358
+Resolution range: 54.1718 1.47354
+History:
+  cctbx.french_wilson analysis
+  From DIALS 3.8, run on 2024-01-29 at 14:54:51 CST  (2024-01-29 at 06:54:51 GMT)
+Crystal 1:
+  Name: HKL_base
+  Project: HKL_base
+  Id: 0
+  Unit cell: (58.0406, 58.0406, 150.903, 90, 90, 90)
+  Number of datasets: 1
+  Dataset 1:
+    Name: HKL_base
+    Id: 0
+    Wavelength: 0
+    Number of columns: 0
+Crystal 2:
+  Name: DEFAULT
+  Project: AUTOMATIC
+  Id: 2
+  Unit cell: (58.0406, 58.0406, 150.903, 90, 90, 90)
+  Number of datasets: 1
+  Dataset 1:
+    Name: NATIVE
+    Id: 1
+    Wavelength: 0.97625
+    Number of columns: 13
+    label    #valid  %valid    min     max type
+    H         37358 100.00%   0.00   37.00 H: index h,k,l
+    K         37358 100.00%   0.00   27.00 H: index h,k,l
+    L         37358 100.00%   0.00  101.00 H: index h,k,l
+    IMEAN     37358 100.00% -16.98 7605.74 J: intensity
+    SIGIMEAN  37358 100.00%   0.03  371.31 Q: standard deviation
+    I(+)      36307  97.19% -41.83 7605.74 K: I(+) or I(-)
+    SIGI(+)   36307  97.19%   0.03  371.31 M: standard deviation
+    I(-)      30865  82.62%  -9.95 5147.57 K: I(+) or I(-)
+    SIGI(-)   30865  82.62%   0.57  187.58 M: standard deviation
+    N(+)      36307  97.19%   1.00   11.00 I: integer
+    N(-)      30865  82.62%   1.00    9.00 I: integer
+    F         36521  97.76%   0.10   86.83 F: amplitude
+    SIGF      36521  97.76%   0.07    2.85 Q: standard deviation
+# command line:
+# cctbx_FrenchWilson  'AUTOMATIC_DEFAULT_scaled.mtz' 'hklout=NATIVE_truncated.mtz' 'anomalous=false'
+#
+# timing information:
+#   time since object initialization: 1.5 seconds
+0 absent reflections in NATIVE removed
+Logfile: freerflag -> /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/25_freerflag.log
+Last 50 lines of /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/25_freerflag.log:
+
+ * Sort Order :
+
+      0     0     0     0     0
+
+ * Space group = 'P41212' (number     92)
+
+ Number of reflections:   37358
+ Number for flagged reflections for each bin: 
+ Reflection flag =:      Number:
+                     0              1859       0
+                     1              1882       0
+                     2              1823       0
+                     3              1816       0
+                     4              1875       0
+                     5              1851       0
+                     6              1909       0
+                     7              1899       0
+                     8              1849       0
+                     9              1906       0
+                    10              1831       0
+                    11              1817       0
+                    12              1859       0
+                    13              1869       0
+                    14              1871       0
+                    15              1883       0
+                    16              1854       0
+                    17              1917       0
+                    18              1927       0
+                    19              1861       0
+Averages:     9.531    1867       0
+
+
+ The no. of systematic absences is      86
+
+ Systematically absent reflections have been assigned
+ FreeR_flags and written to the output file
+
+<B><FONT COLOR="#FF0000"><!--SUMMARY_BEGIN-->
+ FREERFLAG:  Normal termination
+Times: User:       0.4s System:    0.0s Elapsed:     0:00  
+</pre>
+</html>
+<!--SUMMARY_END--></FONT></B>
+# command line:
+# freerflag  'hklin' 'NATIVE_truncated.mtz' 'hklout' 'AUTOMATIC_DEFAULT_free_temp.mtz'
+#
+# timing information:
+#   time since object initialization: 0.5 seconds
+#   time since process start: 0.5 seconds
+Logfile: freerflag -> /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/26_freerflag.log
+Last 50 lines of /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/26_freerflag.log:
+
+ * Sort Order :
+
+      0     0     0     0     0
+
+ * Space group = 'P41212' (number     92)
+
+ Number of reflections:   37358
+ Number for flagged reflections for each bin: 
+ Reflection flag =:      Number:
+                     0              1859    1859
+                     1              1882    1882
+                     2              1823    1823
+                     3              1816    1816
+                     4              1875    1875
+                     5              1851    1851
+                     6              1909    1909
+                     7              1899    1899
+                     8              1849    1849
+                     9              1906    1906
+                    10              1831    1831
+                    11              1817    1817
+                    12              1859    1859
+                    13              1869    1869
+                    14              1871    1871
+                    15              1883    1883
+                    16              1854    1854
+                    17              1917    1917
+                    18              1927    1927
+                    19              1861    1861
+Averages:     9.531    1867    1867
+
+
+ The no. of systematic absences is      86
+
+ Systematically absent reflections have been assigned
+ FreeR_flags and written to the output file
+
+<B><FONT COLOR="#FF0000"><!--SUMMARY_BEGIN-->
+ FREERFLAG:  Normal termination
+Times: User:       0.4s System:    0.0s Elapsed:     0:00  
+</pre>
+</html>
+<!--SUMMARY_END--></FONT></B>
+# command line:
+# freerflag  'hklin' 'AUTOMATIC_DEFAULT_free_temp.mtz' 'hklout' 'AUTOMATIC_DEFAULT_free.mtz'
+#
+# timing information:
+#   time since object initialization: 0.5 seconds
+#   time since process start: 0.5 seconds
+Project: AUTOMATIC
+Crystal: DEFAULT
+Sequence: 
+Wavelength name: NATIVE
+Wavelength 0.97625
+Sweeps:
+SWEEP SWEEP1 [WAVELENGTH NATIVE]
+TEMPLATE Tau-natA5_1_master.h5
+DIRECTORY /home/Data/distributed_computing_test/Tau-nat
+IMAGES (USER) 1 to 1800
+MTZ file: /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/12_integrated.refl
+For AUTOMATIC/DEFAULT/NATIVE                 Overall    Low     High
+High resolution limit                           1.47    4.00    1.47
+Low resolution limit                           54.17   54.21    1.50
+Completeness                                   83.8   100.0    10.3
+Multiplicity                                    9.3    12.1     1.2
+I/sigma                                         9.2    30.4     0.2
+Rmerge(I)                                     0.124   0.082   0.660
+Rmerge(I+/-)                                  0.121   0.081   0.456
+Rmeas(I)                                      0.129   0.085   0.892
+Rmeas(I+/-)                                   0.131   0.087   0.640
+Rpim(I)                                       0.037   0.024   0.595
+Rpim(I+/-)                                    0.050   0.032   0.450
+CC half                                       0.997   0.996   0.422
+Wilson B factor                              17.990
+Anomalous completeness                         77.1   100.0     0.8
+Anomalous multiplicity                          5.1     7.2     1.1
+Anomalous correlation                        -0.371  -0.432   0.000
+Anomalous slope                               0.471
+dF/F                                          0.071
+dI/s(dI)                                      0.538
+Total observations                           345613   30478     269
+Total unique                                  37358    2514     224
+Assuming spacegroup: P 41 21 2
+Unit cell (with estimated std devs):
+58.0406(3) 58.0406(3) 150.9030(8)
+90.0       90.0        90.0      
+mtz_unmerged format:
+Scaled reflections (NATIVE): /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DataFiles/AUTOMATIC_DEFAULT_scaled_unmerged.mtz
+mtz format:
+Scaled reflections: /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DataFiles/AUTOMATIC_DEFAULT_free.mtz
+Processing took 00h 13m 07s
+XIA2 used... ccp4, dials, dials.scale, xia2
+Here are the appropriate citations (BIBTeX in xia2-citations.bib.)
+Beilsten-Edmands, J. et al. (2020) Acta Cryst. D76.
+Winn, M. D. et al. (2011) Acta Cryst. D67, 235-242.
+Winter, G. (2010) J. Appl. Cryst. 43, 186-190.
+Winter, G. et al. (2018) Acta Cryst. D74, 85-97.
+Failed to delete: /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/AUTOMATIC_DEFAULT_scaled_unmerged.mmcif ([Errno 2] No such file or directory: '/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/AUTOMATIC_DEFAULT_scaled_unmerged.mmcif')
+Traceback (most recent call last):
+  File "/home/Data/local/opt/xtal/ccp4-8.0/lib/python3.7/site-packages/xia2/Handlers/Files.py", line 38, in cleanup
+    os.remove(f)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/AUTOMATIC_DEFAULT_scaled_unmerged.mmcif'
+Deleted: /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/AUTOMATIC_DEFAULT_free_temp.mtz
+Copied log file /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/5_dials.index.log to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/LogFiles/AUTOMATIC_DEFAULT_NATIVE_SWEEP1_INDEX.log
+Copied log file /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/7_dials.refine_bravais_settings.log to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/LogFiles/AUTOMATIC_DEFAULT_NATIVE_SWEEP1_LATTICE.log
+Copied log file /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/refine/10_dials.refine_REFINE.log to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/LogFiles/AUTOMATIC_DEFAULT_NATIVE_SWEEP1_REFINE.log
+Copied log file /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/12_dials.integrate_INTEGRATE.log to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/LogFiles/AUTOMATIC_DEFAULT_NATIVE_SWEEP1_INTEGRATE.log
+Copied log file /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/14_dials.symmetry.log to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/LogFiles/AUTOMATIC_DEFAULT_SYMMETRY.log
+Copied log file /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/18_dials.scale.log to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/LogFiles/AUTOMATIC_DEFAULT_SCALE.log
+Copied log file /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/24_cctbx_FrenchWilson.log to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/LogFiles/AUTOMATIC_DEFAULT_NATIVE_truncate.log
+Copied log file /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/report/xtriage.log to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/LogFiles/Xtriage.log
+Copied html file /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/6_dials.index.report.html to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/LogFiles/AUTOMATIC_DEFAULT_NATIVE_SWEEP1_INDEX.html
+Copied html file /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/refine/11_dials.refine.report.html to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/LogFiles/AUTOMATIC_DEFAULT_NATIVE_SWEEP1_REFINE.html
+Copied html file /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/13_dials.integrate.report.html to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/LogFiles/AUTOMATIC_DEFAULT_NATIVE_SWEEP1_INTEGRATE.html
+Copied html file /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/18_scaling.html to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/LogFiles/AUTOMATIC_DEFAULT_SCALE.html
+Copied data file /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/AUTOMATIC_DEFAULT_scaled_unmerged.mtz to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DataFiles/AUTOMATIC_DEFAULT_scaled_unmerged.mtz
+Copied data file /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/AUTOMATIC_DEFAULT_scaled_unmerged.sca to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DataFiles/AUTOMATIC_DEFAULT_scaled_unmerged.sca
+Copied data file /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/AUTOMATIC_DEFAULT_scaled.mtz to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DataFiles/AUTOMATIC_DEFAULT_scaled.mtz
+Copied data file /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/AUTOMATIC_DEFAULT_scaled.sca to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DataFiles/AUTOMATIC_DEFAULT_scaled.sca
+Copied data file /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/AUTOMATIC_DEFAULT_free.mtz to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DataFiles/AUTOMATIC_DEFAULT_free.mtz
+Copied extra data file /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/15_reindexed.expt to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DataFiles/AUTOMATIC_DEFAULT_NATIVE_SWEEP1.expt
+Copied extra data file /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/15_reindexed.refl to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DataFiles/AUTOMATIC_DEFAULT_NATIVE_SWEEP1.refl
+Copied extra data file /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/20_refined_cell.expt to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DataFiles/AUTOMATIC_DEFAULT_scaled.expt
+Copied extra data file /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/18_scaled.refl to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DataFiles/AUTOMATIC_DEFAULT_scaled.refl
+Copied extra data file /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/SWEEP1_integrated.mtz to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DataFiles/AUTOMATIC_DEFAULT_NATIVE_SWEEP1_INTEGRATE.mtz
+
+Timing report:
+  0.0s   1. ◯     dials.generate_mask (2.0s)
+  2.0s   2. ◯     dials.find_spots (2.1m)
+127.7s   3. ◯     dials.detect_blanks (3.6s)
+131.3s   4. ◯     dials.search_beam_position (17.5s)
+149.0s   5. ◯     dials.index (28.8s)
+178.9s   6. ◯     dials.refine_bravais_settings (12.7s)
+191.8s   7. ◯     dials.reindex (4.9s)
+197.5s   8. ◯     dials.refine (10.6s)
+208.1s   9. ◯     dials.refine (17.3s)
+225.8s  10. ◯     dials.integrate (5.5m)
+558.6s  11. ◯     dials.report (7.8s)
+566.8s  12. ◯     dials.symmetry (28.9s)
+595.7s  13. ◯     dials.reindex (6.1s)
+602.0s  14. ◯     dials.scale (54.3s)
+656.3s  15. ◯     dials.estimate_resolution (4.3s)
+660.6s  16. ◯     dials.scale (34.6s)
+695.2s  17. ◯     dials.symmetry (5.5s)
+701.0s  18. ◯     dials.two_theta_refine (4.6s)
+705.8s  19. ◯     dials.export (4.1s)
+712.8s  20. ◯     dials.merge (7.0s)
+720.0s  21. ◯     dials.export (15.5s)
+735.6s  22. ◯     dials.export (6.0s)
+741.6s  T1  🤔     xia2 thinking time (7.9s)
+749.5s  23. ◯     cctbx_FrenchWilson (1.5s)
+754.5s  24. ◯     freerflag (0.5s)
+755.0s  25. ◯     freerflag (0.5s)
+755.5s  T2  🤔     xia2 thinking time (16.4s)
+771.9s  26. ◯     xia2.report (14.1s)
+
+Longest times:
+332.7s:  10. dials.integrate  'input.experiments=/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/refine/10_refined.expt' 'nproc=90' 'input.reflections=/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/refine/10_refined.refl' 'output.experiments=12_integrated.expt' 'output.reflections=12_integrated.refl' 'output.report=12_integration_report.json' 'output.include_bad_reference=True' 'debug.reference.output=True' 'profile.fitting=True' 'gaussian_rs.scan_varying=False' 'outlier.algorithm=null' 'background.algorithm=glm' 'prediction.d_max=56.901234' 'prediction.d_min=1.468879'
+124.8s:   2. dials.find_spots  'input.experiments=1_SWEEP1_masked.expt' 'output.experiments=2_SWEEP1_strong.expt' 'output.reflections=2_SWEEP1_strong.refl' 'nproc=90' 'spotfinder.scan_range=1,1800' 'dispersion.min_local=0' 'dispersion.kernel_size=3 3' 'write_hot_mask=true' 'hot_mask_prefix=2_hot_mask'
+ 54.3s:  14. dials.scale  '/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/15_reindexed.expt' '/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/15_reindexed.refl' 'nproc=90' 'model=physical' 'physical.decay_correction=True' 'physical.absorption_correction=True' 'physical.decay_interval=20' 'physical.scale_interval=15' 'full_matrix=True' 'error_model=basic' 'error_model.grouping=combined' 'outlier_rejection=standard' 'partiality_cutoff=0.4' 'outlier_zmax=6.0' 'overwrite_existing_models=True' 'output.html=16_scaling.html' 'output.experiments=16_scaled.expt' 'output.reflections=16_scaled.refl'
+ 34.6s:  16. dials.scale  '16_scaled.expt' '16_scaled.refl' 'nproc=90' 'model=physical' 'physical.decay_correction=True' 'physical.absorption_correction=True' 'physical.decay_interval=20' 'physical.scale_interval=15' 'full_matrix=True' 'error_model=basic' 'error_model.grouping=combined' 'outlier_rejection=standard' 'partiality_cutoff=0.4' 'cut_data.d_min=1.47' 'outlier_zmax=6.0' 'output.html=18_scaling.html' 'output.experiments=18_scaled.expt' 'output.reflections=18_scaled.refl'
+ 28.9s:  12. dials.symmetry  '/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/12_integrated.expt' '/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/12_integrated.refl' 'output.experiments=14_symmetrized.expt' 'output.reflections=14_symmetrized.refl' 'relative_length_tolerance=0.05' 'absolute_angle_tolerance=2' 'best_monoclinic_beta=False' 'output.json=14_dials_symmetry.json'
+ 28.8s:   5. dials.index  '4_optimised.expt' '2_SWEEP1_strong.refl' 'indexing.method=fft3d' 'indexing.nproc=90' 'reflections_per_degree=100' 'close_to_spindle_cutoff=0.020000' 'outlier.algorithm=auto' 'output.experiments=5_indexed.expt' 'output.reflections=5_indexed.refl'
+ 17.5s:   4. dials.search_beam_position  '2_SWEEP1_strong.expt' '2_SWEEP1_strong.refl' 'nproc=90' 'output.experiments=4_optimised.expt'
+ 17.3s:   9. dials.refine  '9_refined.expt' '9_refined.refl' 'scan_varying=True' 'close_to_spindle_cutoff=0.020000' 'outlier.algorithm=auto' 'output.experiments=10_refined.expt' 'output.reflections=10_refined.refl' 'reflections_per_degree=100' 'unit_cell.smoother.interval_width_degrees=36' 'orientation.smoother.interval_width_degrees=36'
+ 16.4s:  T2  xia2 thinking time (16.4s)
+ 15.5s:  21. dials.export  'experiments=20_refined_cell.expt' 'reflections=18_scaled.refl' 'format=mmcif' 'mmcif.hklout=AUTOMATIC_DEFAULT_scaled_unmerged.mmcif' 'combine_partials=true' 'mmcif.compress=bz2' 'partiality_threshold=0.4' 'pdb_version=v5_next' 'intensity=scale'
+Status: normal termination

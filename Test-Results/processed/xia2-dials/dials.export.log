@@ -1,0 +1,66 @@
+DIALS (2018) Acta Cryst. D74, 85-97. https://doi.org/10.1107/S2059798317017235
+DIALS 3.8
+The following parameters have been modified:
+
+intensity = auto *profile *sum scale
+mtz {
+  partiality_threshold = 0.99
+  hklout = "/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/SWEEP1_integrated.mtz"
+  crystal_name = "DEFAULT"
+  project_name = "AUTOMATIC"
+}
+input {
+  experiments = /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/15_reindexed.expt
+  reflections = /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/15_reindexed.refl
+}
+
+Rotating experiments about axis (0.5773502691896258, -0.5773502691896257, -0.5773502691896258) by 120.00°
+Read 394021 predicted reflections
+Selected 347175 reflections integrated by profile and summation methods
+Combined 9206 partial reflections with other partial reflections
+Removed 4678 reflections below partiality threshold
+Removed 12 intensity.sum.value reflections with I/Sig(I) < -5.0
+Removed 809 intensity.prf.value reflections with I/Sig(I) < -5.0
+Saving 332470 integrated reflections to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/SWEEP1_integrated.mtz
+
+Title: From dials.export
+Space group symbol from file: P422
+Space group number from file: 89
+Space group from matrices: P 4 2 2 (No. 89)
+Point group symbol from file: 422
+Number of batches: 1800
+Number of crystals: 1
+Number of Miller indices: 332470
+Resolution range: 54.1477 1.47489
+History:
+  From DIALS 3.8, run on 2024-01-29 at 14:55:12 CST  (2024-01-29 at 06:55:12 GMT)
+Crystal 1:
+  Name: DEFAULT
+  Project: AUTOMATIC
+  Id: 1
+  Unit cell: (58.0152, 58.0152, 150.828, 90, 90, 90)
+  Number of datasets: 1
+  Dataset 1:
+    Name: FROMDIALS
+    Id: 1
+    Wavelength: 0.976254
+    Number of columns: 17
+    label        #valid  %valid     min      max type
+    H            332470 100.00%    0.00    37.00 H: index h,k,l
+    K            332470 100.00%    0.00    27.00 H: index h,k,l
+    L            332470 100.00%    0.00   101.00 H: index h,k,l
+    M_ISYM       332470 100.00%    1.00    16.00 Y: M/ISYM, packed partial/reject flag and symmetry number
+    BATCH        332470 100.00%    4.00  1796.00 B: BATCH number
+    IPR          332470 100.00%  -23.30 28938.51 J: intensity
+    SIGIPR       332470 100.00%    0.03    54.56 Q: standard deviation
+    I            332470 100.00% -120.41 41230.50 J: intensity
+    SIGI         332470 100.00%    0.09   187.51 Q: standard deviation
+    BG           332470 100.00%    9.12  2292.34 R: real
+    SIGBG        332470 100.00%    3.32    52.35 R: real
+    FRACTIONCALC 332470 100.00%    0.99     1.00 R: real
+    XDET         332470 100.00%    6.56  4143.43 R: real
+    YDET         332470 100.00%    7.88  4363.37 R: real
+    ROT          332470 100.00%   69.18   248.47 R: real
+    LP           332470 100.00%    0.01     0.62 R: real
+    QE           332470 100.00%    0.83     0.90 R: real
+

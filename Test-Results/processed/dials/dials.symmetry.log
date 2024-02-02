@@ -1,0 +1,139 @@
+DIALS (2018) Acta Cryst. D74, 85-97. https://doi.org/10.1107/S2059798317017235
+DIALS 3.8
+The following parameters have been modified:
+
+input {
+  experiments = integrated.expt
+  reflections = integrated.refl
+}
+
+================================================================================
+
+Performing Laue group analysis
+
+Filtering reflections for dataset 0
+Read 368897 predicted reflections
+Selected 347573 reflections integrated by profile and summation methods
+Combined 9219 partial reflections with other partial reflections
+Removed 119 reflections below partiality threshold
+Removed 21 intensity.sum.value reflections with I/Sig(I) < -5
+Removed 1149 intensity.prf.value reflections with I/Sig(I) < -5
+A round of outlier rejection has been performed, 
+903 outliers have been identified. 
+
+Patterson group: P 4/m m m
+
+--------------------------------------------------------------------------------
+
+Normalising intensities for dataset 1
+
+ML estimate of overall B_cart value:
+  16.49, -1.83,  2.67
+         21.47,  1.90
+                14.54
+ML estimate of  -log of scale factor:
+  -2.89
+
+--------------------------------------------------------------------------------
+
+Estimation of resolution for Laue group analysis
+
+Removing 21 Wilson outliers with E^2 >= 16.0
+Resolution estimate from <I>/<σ(I)> > 4.0 : 2.43
+Resolution estimate from CC½ > 0.60: 1.75
+High resolution limit set to: 1.75
+Selecting 249357 reflections with d > 1.75
+
+Input crystal symmetry:
+Unit cell: (58.0023, 58.0471, 150.837, 90.0286, 89.9212, 90.0201)
+Space group: P 1 (No. 1)
+Change of basis op to minimum cell: -a,b,-c
+Crystal symmetry in minimum cell:
+Unit cell: (58.0023, 58.0471, 150.837, 89.9714, 89.9212, 89.9799)
+Space group: P 1 (No. 1)
+Lattice point group: P 4/m m m
+
+Overall CC for 20000 unrelated pairs: 0.278
+Estimated expectation value of true correlation coefficient E(CC) = 0.969
+Estimated sd(CC) = 0.787 / sqrt(N)
+Estimated E(CC) of true correlation coefficient from identity = 0.962
+
+--------------------------------------------------------------------------------
+
+Scoring individual symmetry elements
+
++--------------+--------+------+--------+-----+---------------+
+|   likelihood |   Z-CC |   CC |      N |     | Operator      |
+|--------------+--------+------+--------+-----+---------------|
+|        0.919 |   9.54 | 0.95 | 193962 | *** | 1 |(0, 0, 0)  |
+|        0.832 |   8.79 | 0.88 | 357736 | **  | 4 |(0, 0, 1)  |
+|        0.868 |   9.01 | 0.9  | 182370 | **  | 2 |(1, 0, 0)  |
+|        0.87  |   9.03 | 0.9  | 173650 | **  | 2 |(0, 1, 0)  |
+|        0.832 |   8.79 | 0.88 | 178024 | **  | 2 |(0, 0, 1)  |
+|        0.823 |   8.74 | 0.87 | 195776 | **  | 2 |(1, 1, 0)  |
+|        0.908 |   9.38 | 0.94 | 178334 | *** | 2 |(-1, 1, 0) |
++--------------+--------+------+--------+-----+---------------+
+
+--------------------------------------------------------------------------------
+
+Scoring all possible sub-groups
+
++-------------------+-----+--------------+----------+--------+--------+------+-------+---------+--------------------+
+| Patterson group   |     |   Likelihood |   NetZcc |   Zcc+ |   Zcc- |   CC |   CC- |   delta | Reindex operator   |
+|-------------------+-----+--------------+----------+--------+--------+------+-------+---------+--------------------|
+| P 4/m m m         | *** |        0.99  |     9.05 |   9.05 |   0    | 0.9  |  0    |     0.1 | a,b,c              |
+| C m m m           |     |        0.005 |     0.18 |   9.12 |   8.94 | 0.91 |  0.89 |     0.1 | -a-b,-a+b,-c       |
+| P m m m           |     |        0.004 |     0.12 |   9.1  |   8.98 | 0.91 |  0.89 |     0.1 | a,b,c              |
+| P 4/m             |     |        0     |     0    |   9.05 |   9.04 | 0.9  |  0.9  |     0.1 | a,b,c              |
+| C 1 2/m 1         |     |        0     |     0.59 |   9.46 |   8.87 | 0.95 |  0.89 |     0.1 | -a+b,a+b,-c        |
+| P 1 2/m 1         |     |        0     |     0.34 |   9.29 |   8.95 | 0.93 |  0.89 |     0   | a,b,c              |
+| P 1 2/m 1         |     |        0     |     0.33 |   9.28 |   8.95 | 0.93 |  0.89 |     0.1 | -b,a,c             |
+| P 1 2/m 1         |     |        0     |     0.18 |   9.17 |   8.99 | 0.92 |  0.9  |     0.1 | a,c,-b             |
+| C 1 2/m 1         |     |        0     |     0.15 |   9.15 |   9    | 0.91 |  0.9  |     0.1 | -a-b,-a+b,-c       |
+| P -1              |     |        0     |     0.58 |   9.54 |   8.96 | 0.95 |  0.89 |     0   | a,b,c              |
++-------------------+-----+--------------+----------+--------+--------+------+-------+---------+--------------------+
+
+Best solution: P 4/m m m
+Unit cell: 
+Reindex operator: a,b,c
+Laue group probability: 0.990
+Laue group confidence: 0.988
+
++-------------------+--------------------------+
+| Patterson group   | Corresponding MX group   |
+|-------------------+--------------------------|
+| P 4/m m m         | P 4 2 2                  |
++-------------------+--------------------------+
+================================================================================
+
+Analysing systematic absences
+
+Laue group: P 4/m m m
+Performing systematic absence checks on unscaled profile-integrated data
+Read 368897 predicted reflections
+Selected 356646 profile integrated reflections
+Removed 37311 reflections with d <= 1.75
+Combined 9392 partial reflections with other partial reflections
+Removed 4530 reflections below partiality threshold
+Laue group: P 4/m m m
++--------------+---------+---------------+--------------+---------------+--------------+-------------------+------------------+
+| Screw axis   |   Score |   No. present |   No. absent |   <I> present |   <I> absent |   <I/sig> present |   <I/sig> absent |
+|--------------+---------+---------------+--------------+---------------+--------------+-------------------+------------------|
+| 41c          |       1 |            21 |           65 |      1076.15  |       -0.097 |            86.267 |            0.021 |
+| 21a          |       1 |            16 |           17 |       287.836 |        0.161 |            57.218 |            0.064 |
+| 42c          |       1 |            43 |           43 |       525.595 |       -0.181 |            42.139 |            0.024 |
++--------------+---------+---------------+--------------+---------------+--------------+-------------------+------------------+
++---------------+---------+
+| Space group   |   score |
+|---------------+---------|
+| P 4 2 2       |       0 |
+| P 4 21 2      |       0 |
+| P 41 2 2      |       0 |
+| P 42 2 2      |       0 |
+| P 41 21 2     |       1 |
+| P 42 21 2     |       0 |
++---------------+---------+
+Recommended space group: P 41 21 2
+Space group with equivalent score (enantiomorphic pair): P 43 21 2
+Saving reindexed experiments to symmetrized.expt in space group P 41 21 2
+Saving 368897 reindexed reflections to symmetrized.refl

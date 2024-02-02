@@ -1,0 +1,151 @@
+DIALS (2018) Acta Cryst. D74, 85-97. https://doi.org/10.1107/S2059798317017235
+DIALS 3.8
+The following parameters have been modified:
+
+best_monoclinic_beta = False
+output {
+  experiments = "/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/14_symmetrized.expt"
+  reflections = "/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/14_symmetrized.refl"
+  json = "/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/14_dials_symmetry.json"
+}
+input {
+  experiments = /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/12_integrated.expt
+  reflections = /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/12_integrated.refl
+}
+
+================================================================================
+
+Performing Laue group analysis
+
+Filtering reflections for dataset 0
+Read 394021 predicted reflections
+Selected 347175 reflections integrated by profile and summation methods
+Combined 9206 partial reflections with other partial reflections
+Removed 116 reflections below partiality threshold
+Removed 16 intensity.sum.value reflections with I/Sig(I) < -5
+Removed 1122 intensity.prf.value reflections with I/Sig(I) < -5
+A round of outlier rejection has been performed, 
+892 outliers have been identified. 
+
+Patterson group: P 4/m m m
+
+--------------------------------------------------------------------------------
+
+Normalising intensities for dataset 1
+
+ML estimate of overall B_cart value:
+  16.57,  2.12,  2.63
+         21.92, -2.07
+                14.57
+ML estimate of  -log of scale factor:
+  -2.89
+
+--------------------------------------------------------------------------------
+
+Estimation of resolution for Laue group analysis
+
+Removing 24 Wilson outliers with E^2 >= 16.0
+Resolution estimate from <I>/<σ(I)> > 4.0 : 2.45
+Resolution estimate from CC½ > 0.60: 1.77
+High resolution limit set to: 1.77
+Selecting 245064 reflections with d > 1.77
+
+Input crystal symmetry:
+Unit cell: (58.0152, 58.0152, 150.828, 90, 90, 90)
+Space group: P 1 (No. 1)
+Change of basis op to minimum cell: -a,b,-c
+Crystal symmetry in minimum cell:
+Unit cell: (58.0152, 58.0152, 150.828, 90, 90, 90)
+Space group: P 1 (No. 1)
+Lattice point group: P 4/m m m
+
+Overall CC for 20000 unrelated pairs: 0.258
+Estimated expectation value of true correlation coefficient E(CC) = 0.967
+Estimated sd(CC) = 0.844 / sqrt(N)
+Estimated E(CC) of true correlation coefficient from identity = 0.960
+
+--------------------------------------------------------------------------------
+
+Scoring individual symmetry elements
+
++--------------+--------+------+--------+-----+---------------+
+|   likelihood |   Z-CC |   CC |      N |     | Operator      |
+|--------------+--------+------+--------+-----+---------------|
+|        0.917 |   9.52 | 0.95 | 190408 | *** | 1 |(0, 0, 0)  |
+|        0.825 |   8.74 | 0.87 | 354864 | **  | 4 |(0, 0, 1)  |
+|        0.859 |   8.95 | 0.89 | 180932 | **  | 2 |(1, 0, 0)  |
+|        0.868 |   9    | 0.9  | 172512 | **  | 2 |(0, 1, 0)  |
+|        0.827 |   8.76 | 0.88 | 176386 | **  | 2 |(0, 0, 1)  |
+|        0.907 |   9.37 | 0.94 | 176660 | *** | 2 |(1, 1, 0)  |
+|        0.815 |   8.69 | 0.87 | 192490 | **  | 2 |(-1, 1, 0) |
++--------------+--------+------+--------+-----+---------------+
+
+--------------------------------------------------------------------------------
+
+Scoring all possible sub-groups
+
++-------------------+-----+--------------+----------+--------+--------+------+-------+---------+--------------------+
+| Patterson group   |     |   Likelihood |   NetZcc |   Zcc+ |   Zcc- |   CC |   CC- |   delta | Reindex operator   |
+|-------------------+-----+--------------+----------+--------+--------+------+-------+---------+--------------------|
+| P 4/m m m         | *** |        0.988 |     9.01 |   9.01 |   0    | 0.9  |  0    |       0 | a,b,c              |
+| C m m m           |     |        0.005 |     0.19 |   9.09 |   8.9  | 0.91 |  0.89 |       0 | -a+b,a+b,-c        |
+| P m m m           |     |        0.005 |     0.12 |   9.06 |   8.94 | 0.91 |  0.89 |       0 | a,b,c              |
+| P 4/m             |     |        0.001 |     0.01 |   9.02 |   9.01 | 0.89 |  0.9  |       0 | a,b,c              |
+| C 1 2/m 1         |     |        0     |     0.62 |   9.45 |   8.83 | 0.94 |  0.88 |       0 | -a-b,-a+b,-c       |
+| P 1 2/m 1         |     |        0     |     0.36 |   9.27 |   8.9  | 0.93 |  0.89 |       0 | a,b,c              |
+| P 1 2/m 1         |     |        0     |     0.32 |   9.24 |   8.92 | 0.92 |  0.89 |       0 | -b,a,c             |
+| P 1 2/m 1         |     |        0     |     0.2  |   9.15 |   8.95 | 0.91 |  0.89 |       0 | a,c,-b             |
+| C 1 2/m 1         |     |        0     |     0.15 |   9.12 |   8.97 | 0.91 |  0.89 |       0 | -a+b,a+b,-c        |
+| P -1              |     |        0     |     0.6  |   9.52 |   8.92 | 0.95 |  0.89 |       0 | a,b,c              |
++-------------------+-----+--------------+----------+--------+--------+------+-------+---------+--------------------+
+
+Best solution: P 4/m m m
+Unit cell: 
+Reindex operator: a,b,c
+Laue group probability: 0.988
+Laue group confidence: 0.986
+
++-------------------+--------------------------+
+| Patterson group   | Corresponding MX group   |
+|-------------------+--------------------------|
+| P 4/m m m         | P 4 2 2                  |
++-------------------+--------------------------+
+================================================================================
+
+Analysing systematic absences
+
+Laue group: P 4/m m m
+Performing systematic absence checks on unscaled profile-integrated data
+Read 394021 predicted reflections
+Selected 356767 profile integrated reflections
+Removed 42411 reflections with d <= 1.77
+Combined 9387 partial reflections with other partial reflections
+Removed 4541 reflections below partiality threshold
+Laue group: P 4/m m m
++--------------+---------+---------------+--------------+---------------+--------------+-------------------+------------------+
+| Screw axis   |   Score |   No. present |   No. absent |   <I> present |   <I> absent |   <I/sig> present |   <I/sig> absent |
+|--------------+---------+---------------+--------------+---------------+--------------+-------------------+------------------|
+| 41c          |       1 |            21 |           62 |      1077.61  |       -0.152 |            86.239 |            0.01  |
+| 21a          |       1 |            16 |           15 |       288.074 |        0.125 |            56.995 |            0.061 |
+| 42c          |       1 |            41 |           42 |       551.997 |       -0.272 |            44.19  |           -0.004 |
++--------------+---------+---------------+--------------+---------------+--------------+-------------------+------------------+
++---------------+---------+
+| Space group   |   score |
+|---------------+---------|
+| P 4 2 2       |       0 |
+| P 4 21 2      |       0 |
+| P 41 2 2      |       0 |
+| P 42 2 2      |       0 |
+| P 41 21 2     |       1 |
+| P 42 21 2     |       0 |
++---------------+---------+
+Recommended space group: P 41 21 2
+Space group with equivalent score (enantiomorphic pair): P 43 21 2
+Saving reindexed experiments to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/14_symmetrized.expt in space group P 41 21 2
+Saving 426844 reindexed reflections to /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/scale/14_symmetrized.refl
+# command line:
+# dials.symmetry  '/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/12_integrated.expt' '/home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/integrate/12_integrated.refl' 'output.experiments=14_symmetrized.expt' 'output.reflections=14_symmetrized.refl' 'relative_length_tolerance=0.05' 'absolute_angle_tolerance=2' 'best_monoclinic_beta=False' 'output.json=14_dials_symmetry.json'
+#
+# timing information:
+#   time since object initialization: 28.9 seconds
+#   time since process start: 28.9 seconds

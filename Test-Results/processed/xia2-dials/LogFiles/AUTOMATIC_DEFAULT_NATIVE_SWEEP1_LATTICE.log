@@ -1,0 +1,49 @@
+DIALS (2018) Acta Cryst. D74, 85-97. https://doi.org/10.1107/S2059798317017235
+DIALS 3.8
+The following parameters have been modified:
+
+nproc = 90
+best_monoclinic_beta = False
+input {
+  experiments = /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/5_indexed.expt
+  reflections = /home/Data/distributed_computing_test/Tau-nat/processed/xia2-dials/DEFAULT/NATIVE/SWEEP1/index/5_indexed.refl
+}
+
+Chiral space groups corresponding to each Bravais lattice:
+aP: P1
+mP: P2 P21
+mC: C2
+oP: P222 P2221 P21212 P212121
+oC: C2221 C222
+tP: P4 P41 P42 P43 P422 P4212 P4122 P41212 P4222 P42212 P4322 P43212
++------------+--------------+--------+--------------+----------+-----------+------------------------------------------+----------+------------+
+|   Solution |   Metric fit |   rmsd | min/max cc   |   #spots | lattice   | unit_cell                                |   volume | cb_op      |
+|------------+--------------+--------+--------------+----------+-----------+------------------------------------------+----------+------------|
+|   *      9 |       0.1035 |  0.173 | 0.683/0.695  |    18000 | tP        | 58.01  58.01 150.81  90.00  90.00  90.00 |   507478 | a,b,c      |
+|   *      8 |       0.1035 |  0.174 | 0.694/0.730  |    18000 | oC        | 82.04  82.03 150.81  90.00  90.00  90.00 |  1014929 | a-b,a+b,c  |
+|   *      7 |       0.1035 |  0.175 | 0.730/0.730  |    18000 | mC        | 82.01  82.01 150.76  90.00  89.96  90.00 |  1014065 | a-b,a+b,c  |
+|   *      6 |       0.0866 |  0.17  | 0.706/0.706  |    18000 | mC        | 82.05  82.05 150.81  90.00  89.92  90.00 |  1015278 | a+b,-a+b,c |
+|   *      5 |       0.0721 |  0.174 | 0.694/0.753  |    18000 | oP        | 57.99  58.06 150.81  90.00  90.00  90.00 |   507721 | a,b,c      |
+|   *      4 |       0.0682 |  0.174 | 0.728/0.728  |    18000 | mP        | 58.08  58.01 150.87  90.00  89.97  90.00 |   508361 | -b,-a,-c   |
+|   *      3 |       0.0721 |  0.175 | 0.694/0.694  |    18000 | mP        | 57.99 150.82  58.06  90.00  90.00  90.00 |   507851 | -a,-c,-b   |
+|   *      2 |       0.0238 |  0.171 | 0.753/0.753  |    18000 | mP        | 57.95  58.01 150.70  90.00  89.93  90.00 |   506655 | a,b,c      |
+|   *      1 |       0      |  0.171 | -/-          |    18000 | aP        | 57.98  58.05 150.79  89.97  89.93  89.99 |   507558 | a,b,c      |
++------------+--------------+--------+--------------+----------+-----------+------------------------------------------+----------+------------+
+* = recommended solution
+
+Saving summary as bravais_summary.json
+Saving solution 9 as bravais_setting_9.expt
+Saving solution 8 as bravais_setting_8.expt
+Saving solution 7 as bravais_setting_7.expt
+Saving solution 6 as bravais_setting_6.expt
+Saving solution 5 as bravais_setting_5.expt
+Saving solution 4 as bravais_setting_4.expt
+Saving solution 3 as bravais_setting_3.expt
+Saving solution 2 as bravais_setting_2.expt
+Saving solution 1 as bravais_setting_1.expt
+# command line:
+# dials.refine_bravais_settings  '5_indexed.expt' '5_indexed.refl' 'nproc=90' 'best_monoclinic_beta=False' 'close_to_spindle_cutoff=0.020000'
+#
+# timing information:
+#   time since object initialization: 12.7 seconds
+#   time since process start: 12.7 seconds
